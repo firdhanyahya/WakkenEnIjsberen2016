@@ -3,4 +3,33 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:text="Play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/playBtn" />
+
+    <Button
+        android:text="How to play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/howToBtn" />
+
+    <Button
+        android:text="Settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settingsBtn" />
+
+    <Button
+        android:text="Highscores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Highscores" />
+
+    <Button
+        android:text="About us"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/aboutBtn" />
 </LinearLayout>
