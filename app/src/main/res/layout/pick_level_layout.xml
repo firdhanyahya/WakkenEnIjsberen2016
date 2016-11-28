@@ -19,5 +19,5 @@
         android:text="Level 3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lvl2Btn" />
+        android:id="@+id/lvl3Btn" />
 </LinearLayout>
