@@ -5,5 +5,9 @@ package com.example.firdhan.wakkenenijsberen.GameLevels;
  */
 
 public interface ILevel {
+    void throwDice(int aantalDobbelstenen);
 
+    int[] getAnswer();
+
+    int[] getDices();
 }

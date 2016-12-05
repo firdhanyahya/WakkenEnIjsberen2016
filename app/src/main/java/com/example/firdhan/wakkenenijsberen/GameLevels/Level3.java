@@ -6,7 +6,7 @@ import com.example.firdhan.wakkenenijsberen.Dice;
  * Created by James on 02/12/2016.
  */
 
-public class Level3 {
+public class Level3 implements ILevel{
     //Dobbelstenen variant voor level 3
     private final int[] wakken = {0,1,1,1,1,1};
     private final int[] ijsberen = {0,1,1,2,2,2};
@@ -33,8 +33,8 @@ public class Level3 {
         aantalIjsberen = 0;
         aantalPinguins = 0;
 
-        for(int i = 0; i < this.dices.length; i++){
-            switch(dices[i]){
+        for(int dice : dices){
+            switch(dice){
                 case 1:
                     aantalWakken += this.wakken[0];
                     aantalIjsberen += this.ijsberen[0];

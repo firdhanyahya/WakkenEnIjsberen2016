@@ -36,13 +36,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public boolean insertData(String playerName, int timeInSeconds){
-        //TODO Nog niet zeker of de time klopt
-        //TODO zet de format van string naar 00:00 mm-ss
-        String time = Integer.toString(timeInSeconds);
+        //Sla de tijd op als string met format mm:ss
+        String endTime = String.format("%d:%02d", timeInSeconds / 60, timeInSeconds % 60);
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, playerName);
-        contentValues.put(COL_3, time);
+        contentValues.put(COL_3, endTime);
         long result = db.insert(TABLE_NAME, null, contentValues);
         if(result == -1){
             return false;

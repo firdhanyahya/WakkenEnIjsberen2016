@@ -6,17 +6,20 @@ import com.example.firdhan.wakkenenijsberen.Dice;
  * Created by James on 02/12/2016.
  */
 
-public class Level1 {
+public class Level1 implements ILevel{
     //Dobbelstenen variant voor level 1
     private final int[] wakken = {1,0,1,0,1,0};
     private final int[] ijsberen = {0,0,2,0,4,0};
     private final int[] pinguins = {6,0,4,0,2,0};
+
     //Geworpen dobbelstenen
     private int[] dices;
+
     //Aantalwakken, ijsberen en pinguins vastleggen
     private int aantalWakken;
     private int aantalIjsberen;
     private int aantalPinguins;
+
     //Voeg aantalwakken ijsberen en pinguins toe aan een array results voor antwoord
     private int[] results;
 
@@ -33,8 +36,9 @@ public class Level1 {
         aantalIjsberen = 0;
         aantalPinguins = 0;
 
-        for(int i = 0; i < this.dices.length; i++){
-            switch(dices[i]){
+        for(int dice : dices){
+
+            switch(dice){
                 case 1:
                     aantalWakken += this.wakken[0];
                     aantalIjsberen += this.ijsberen[0];
