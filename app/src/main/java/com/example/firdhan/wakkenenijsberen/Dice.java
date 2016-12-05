@@ -11,6 +11,9 @@ public class Dice {
 
     public Dice(int aantalDubbelstenen){
         dices = new int[aantalDubbelstenen];
+    }
+
+    public void rollDices(){
         Random randomDices = new Random();
         //Random dice 1 tm 6;
         for(int i = 0; i < dices.length; i++){
