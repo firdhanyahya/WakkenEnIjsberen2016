@@ -26,7 +26,8 @@
         android:text="@string/highscores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/highscoresBtn" />
+        android:id="@+id/highscoresBtn"
+        android:elevation="0dp" />
 
     <Button
 android:text="@string/about_us"

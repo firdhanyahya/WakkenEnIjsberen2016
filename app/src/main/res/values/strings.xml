@@ -1,4 +1,5 @@
 <resources>
+    <!--Main Menu-->
     <string name="app_name">Wakken en IJsberen</string>
     <string name="play">Play</string>
     <string name="howto">How to Play</string>
@@ -6,7 +7,7 @@
     <string name="highscores">Highscores</string>
     <string name="about_us">About us</string>
 
-    //Intro slider//
+    <!--Intro Slider-->
     <string name="next">VOLGENDE</string>
     <string name="skip">OVERSLAAN</string>
     <string name="start">BEGREPEN</string>

@@ -20,7 +20,7 @@ public class Level1 implements ILevel{
     private int aantalIjsberen;
     private int aantalPinguins;
 
-    //Voeg aantalwakken ijsberen en pinguins toe aan een array results voor antwoord
+    //Voeg aantalwakken ijsberen en pinguins toe aan een array results voor het antwoord
     private int[] results;
 
     //Methode om te werpen. Voeg alle geworpen dobbelstenen aan de array dices

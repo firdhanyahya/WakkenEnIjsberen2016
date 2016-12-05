@@ -12,8 +12,8 @@ import java.sql.Time;
  */
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "HighscoreDatabase";
-    private static final String TABLE_NAME = "Highscores";
+    private static final String DATABASE_NAME = "WakkenEnIjsberen";
+    private static final String TABLE_NAME = "WeIHighscores";
     private static final String COL_1 = "PlayerID";
     private static final String COL_2 = "PlayerName";
     private static final String COL_3 = "Time";
@@ -26,7 +26,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME
                 + " ( " + COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COL_2 + " TEXT NOT NULL," + COL_3 + " TEXT NOT NULL)");
+                + COL_2 + " TEXT NOT NULL,"
+                + COL_3 + " TEXT NOT NULL)");
     }
 
     @Override
@@ -43,6 +44,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         contentValues.put(COL_2, playerName);
         contentValues.put(COL_3, endTime);
         long result = db.insert(TABLE_NAME, null, contentValues);
+        //Kijk of het toevoegen gelukt is, anders returneer false
         if(result == -1){
             return false;
         } else {
