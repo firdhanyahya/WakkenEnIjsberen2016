@@ -2,19 +2,23 @@ package com.example.firdhan.wakkenenijsberen;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.example.firdhan.wakkenenijsberen.GameLevels.Level1;
+import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity {
+
+    FrameLayout mainFrame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Level1 test = new Level1();
-        test.throwDice(3);
-        int[] resultTest = test.getAnswer();
-        int[] dices = test.getDices();
+        mainFrame = (FrameLayout)findViewById(R.id.mainFrameLayout);
+
+        android.app.FragmentManager fm = getFragmentManager();
+        android.app.FragmentTransaction ft = fm.beginTransaction();
+
+        ft.add(mainFrame.getId(), new MainMenuFragment());
+        ft.commit();
     }
 }

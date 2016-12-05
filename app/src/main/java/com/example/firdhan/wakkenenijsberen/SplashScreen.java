@@ -27,7 +27,8 @@ public class SplashScreen extends Activity {
 
                 // Deze methode zal uitgevoerd worden wanneer de timer klaar is
                 // Start de app main activity
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
+
+                Intent i = new Intent(SplashScreen.this, WelkomActivity.class);
                 startActivity(i);
 
                 // sluit de activity

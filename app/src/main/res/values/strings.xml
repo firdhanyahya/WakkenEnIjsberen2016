@@ -5,4 +5,20 @@
     <string name="settings">Settings</string>
     <string name="highscores">Highscores</string>
     <string name="about_us">About us</string>
+
+    //Intro slider//
+    <string name="next">VOLGENDE</string>
+    <string name="skip">OVERSLAAN</string>
+    <string name="start">BEGREPEN</string>
+
+    <string name="slide_1_title">Welkom bij Wakken en IJsberen</string>
+    <string name="slide_1_desc">Hierbij hebt u de keuze om 3, 4, 5 of 6 dobbelstenen te werpen.
+                                Als volgt moet u invullen hoeveel wakken, ijsberen en pinguins u ziet.</string>
+    <string name="slide_2_title">Hoe werkt het?</string>
+    <string name="slide_2_desc">Een wak is het middelste oog van een dobbelsteen.\n\
+                                De ijsberen zijn de ogen om een wak heen. \n\ Alleen om een wak zitten ijsberen!\n\
+                                Zit er GEEN wak op de dobbelsteen, dan is er ook geen ijsbeer.\n\
+                                De pinguins zijn de ogen aan de achterkant van de dobbelsteen.</string>
+    <string name="slide_2_desc_extra">De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.</string>
+    <string name="slide_3_title">Veel succes!</string>
 </resources>
