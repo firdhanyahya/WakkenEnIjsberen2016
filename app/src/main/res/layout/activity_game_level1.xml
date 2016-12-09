@@ -126,4 +126,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="52dp"
         android:id="@+id/button" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/timerTxt"
+        android:layout_width="300dp"
+        android:textAlignment="center" />
 </RelativeLayout>
