@@ -83,6 +83,4 @@ public class Level1 implements ILevel{
     public int[] getDices(){
         return this.dices;
     }
-
-
 }
