@@ -9,36 +9,56 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context="com.example.firdhan.wakkenenijsberen.MainActivity">
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/playBtn"
+        android:background="@drawable/custom_button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:layout_marginBottom="25dp"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
         android:text="@string/play" />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/howToBtn"
+        android:background="@drawable/custom_button"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
         android:text="@string/howto" />
 
     <Button
         android:text="@string/settings"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/settingsBtn" />
+        android:layout_height="50dp"
+        android:id="@+id/settingsBtn"
+        android:background="@drawable/custom_button"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:textColor="#ffffff"
+        android:textSize="30sp"/>
 
     <Button
         android:text="@string/highscores"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/highscoresBtn"
-        android:elevation="0dp" />
+        android:background="@drawable/custom_button"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:textColor="#ffffff"
+        android:textSize="30sp"/>
 
-    <Button
-        android:text="@string/about_us"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/aboutBtn" />
 </LinearLayout>

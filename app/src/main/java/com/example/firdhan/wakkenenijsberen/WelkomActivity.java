@@ -18,6 +18,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * Created by Robin T on 30-11-2016.
+ */
+
 public class WelkomActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
