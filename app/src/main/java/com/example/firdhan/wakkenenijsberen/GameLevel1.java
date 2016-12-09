@@ -1,6 +1,6 @@
 package com.example.firdhan.wakkenenijsberen;
 
-import android.support.annotation.IntegerRes;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,26 +11,34 @@ import android.widget.Toast;
 
 import com.example.firdhan.wakkenenijsberen.GameLevels.Level1;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
+
 public class GameLevel1 extends AppCompatActivity {
 
-    TextView dice1;
-    TextView dice2;
-    TextView dice3;
-    TextView dice4;
-    TextView dice5;
-    EditText wakken;
-    EditText ijsberen;
-    EditText penguins;
-    Level1 level1;
-    Button b;
-    int[] answers;
-    int[] dices;
-    int tries = 0;
+    //Settings
+    private Timer gameTimer = new Timer();
+    private Boolean showTimer;
+    private Boolean showPenguins;
+
+    private TextView dice1, dice2, dice3, dice4, dice5, timerTextView;
+    private EditText wakken, ijsberen, penguins;
+    private Button checkAnswerButton;
+    private Level1 level1 = new Level1();
+
+    private int timeInSecs;
+    private int[] answers;
+    private int[] dices;
+    private int tries = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_level1);
+        //<editor-fold desc="Initialiseren van TextViews">
+        //Haal in sharedPref of de speler de tijd wilt zien of niet.
+//        this.showTimer =
         dice1 = (TextView)findViewById(R.id.dice1Txt);
         dice2 = (TextView)findViewById(R.id.dice2Txt);
         dice3 = (TextView)findViewById(R.id.dice3Txt);
@@ -39,10 +47,12 @@ public class GameLevel1 extends AppCompatActivity {
         wakken = (EditText) findViewById(R.id.editText);
         ijsberen = (EditText)findViewById(R.id.editText2);
         penguins = (EditText)findViewById(R.id.editText3);
-        b = (Button) findViewById(R.id.button);
-        
-        level1 = new Level1();
+        checkAnswerButton = (Button) findViewById(R.id.button);
+        timerTextView = (TextView) findViewById(R.id.timerTxt);
+        //</editor-fold>
+        //Haal aantal dobbelstenen uit sharePref
         level1.throwDice(5);
+
         dices = level1.getDices();
         answers = level1.getAnswer();
         
@@ -54,7 +64,23 @@ public class GameLevel1 extends AppCompatActivity {
             dice5.setText(Integer.toString(dices[4]));
         }
 
-        b.setOnClickListener(new View.OnClickListener() {
+        //Tijd van het spel
+        gameTimer.schedule(new TimerTask() {
+            public void run() {
+                try {
+                    timeInSecs++;
+                    int seconds = timeInSecs % 60;
+                    int minutes =  (timeInSecs % 3600) / 60;
+                    timerTextView.setText(String.format("%02d:%02d", minutes, seconds));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }, 0, 1000); // 1 sec
+
+        //OnClicktListener voor het checken van antwoord
+        checkAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Integer.parseInt(wakken.getText().toString()) == answers[0] &&
