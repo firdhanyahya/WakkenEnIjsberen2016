@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/activity_level_picker"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,36 +9,23 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.firdhan.wakkenenijsberen.MainActivity">
+    tools:context="com.example.firdhan.wakkenenijsberen.LevelPicker">
 
     <Button
+        android:text="Level 1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/playBtn"
-        android:text="@string/play" />
+        android:id="@+id/lvl1Btn" />
 
     <Button
+        android:text="Level 2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/howToBtn"
-        android:text="@string/howto" />
+        android:id="@+id/lvl2Btn" />
 
     <Button
-        android:text="@string/settings"
+        android:text="Level 3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/settingsBtn" />
-
-    <Button
-        android:text="@string/highscores"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/highscoresBtn"
-        android:elevation="0dp" />
-
-    <Button
-        android:text="@string/about_us"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/aboutBtn" />
+        android:id="@+id/lvl3Btn" />
 </LinearLayout>
