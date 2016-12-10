@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#a2222d78</color>
     <color name="colorAccent">#FF4081</color>
 
     <!-- Onderste kleuren zijn bedoeld voor de intro design als je voor het eerst start-->
     <!-- Scherm achtergrond kleur-->
-    <color name="bg_screen1">#0D47A1</color>
+    <color name="bg_screen1">#0d47a1</color>
     <color name="bg_screen2">#1976D2</color>
     <color name="bg_screen3">#2f9bf1</color>
 
     <!-- Bullet points inactieve kleuren -->
-    <color name="dot_dark_screen1">#FF06214D</color>
+    <color name="dot_dark_screen1">#aa06214d</color>
     <color name="dot_dark_screen2">#FF12579C</color>
     <color name="dot_dark_screen3">#2278d4</color>
 
