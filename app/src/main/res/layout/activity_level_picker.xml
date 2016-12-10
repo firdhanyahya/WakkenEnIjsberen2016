@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_level_picker"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.firdhan.wakkenenijsberen.LevelPicker">
+    android:background="@drawable/background"
+    tools:context="com.example.firdhan.wakkenenijsberen.MainActivity">
 
-    <Button
-        android:text="Level 1"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lvl1Btn" />
+        app:srcCompat="@drawable/logowakkenenberen"
+        android:id="@+id/imageView"
+        android:adjustViewBounds="true" />
 
     <Button
-        android:text="Level 2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lvl2Btn" />
+        android:layout_height="50dp"
+        android:id="@+id/@+id/lvl1Btn"
+        android:background="@drawable/custom_button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:layout_marginBottom="10dp"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:text="Level 1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/lvl2Btn"
+        android:background="@drawable/custom_button"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:text="Level 2" />
 
     <Button
         android:text="Level 3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lvl3Btn" />
+        android:layout_height="50dp"
+        android:id="@+id/lvl3Btn"
+        android:background="@drawable/custom_button"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:textColor="#ffffff"
+        android:textSize="30sp"/>
+
 </LinearLayout>
