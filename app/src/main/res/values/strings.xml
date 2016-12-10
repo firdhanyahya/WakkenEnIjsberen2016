@@ -36,7 +36,7 @@
 
     <!--Spinner Items-->
     <string-array name="languages_for_spinner">
-        <item>Netherlands</item>
+        <item>Nederlands</item>
         <item>English</item>
     </string-array>
 
