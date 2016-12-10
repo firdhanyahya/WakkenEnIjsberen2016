@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         settings.setTypeface(iceFont);
         highscore.setTypeface(iceFont);
 
+        PrefManager manager = new PrefManager(this);
+        manager.setDefaultSetting();
 
         howto.setOnClickListener(new View.OnClickListener() {
             @Override
