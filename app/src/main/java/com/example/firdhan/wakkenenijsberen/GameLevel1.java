@@ -30,12 +30,17 @@ public class GameLevel1 extends AppCompatActivity {
     private EditText wakken, ijsberen, penguins;
     private Button checkAnswerButton;
     private Level1 level1 = new Level1();
+
+    private Highscores playerNameAndScore;
     private DatabaseHandler weiDatabase = new DatabaseHandler(this);
 
     private int timeInSecs = -1;
     private int[] answers;
     private int[] dices;
     private int tries = 1;
+
+    //Dialog playername input
+    private EditText input;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,13 +126,14 @@ public class GameLevel1 extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Well done!");
         builder.setMessage("Enter Player Name:");
-        final EditText input = new EditText(this);
+        input = new EditText(this);
         input.setText("Player_1");
         builder.setView(input);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //TODO sla het op in de weiDatabase
+                playerNameAndScore = new Highscores(input.getText().toString(), timeInSecs);
+                weiDatabase.insertData(playerNameAndScore.getPlayerName(), playerNameAndScore.getTimeInSeconds());
             }
         });
 
