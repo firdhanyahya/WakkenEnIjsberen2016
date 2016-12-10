@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.firdhan.wakkenenijsberen.Databases.DatabaseHandler;
 import com.example.firdhan.wakkenenijsberen.GameLevels.Level1;
 
 import java.util.Timer;
@@ -24,10 +25,12 @@ public class GameLevel1 extends AppCompatActivity {
     private Boolean showTimer;
     private Boolean showPenguins;
 
+    //Verander de dice TextViews naar Imageview
     private TextView dice1, dice2, dice3, dice4, dice5, timerTextView;
     private EditText wakken, ijsberen, penguins;
     private Button checkAnswerButton;
     private Level1 level1 = new Level1();
+    private DatabaseHandler weiDatabase = new DatabaseHandler(this);
 
     private int timeInSecs;
     private int[] answers;

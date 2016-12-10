@@ -1,6 +1,7 @@
 package com.example.firdhan.wakkenenijsberen;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,10 +24,16 @@ public class LevelPicker extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_level_picker);
+        //* custom font voor de main screen \\*
+        Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
 
         level1 = (Button)findViewById(R.id.lvl1Btn);
         level2 = (Button)findViewById(R.id.lvl2Btn);
         level3 = (Button)findViewById(R.id.lvl3Btn);
+
+        level1.setTypeface(iceFont);
+        level2.setTypeface(iceFont);
+        level3.setTypeface(iceFont);
 
         level1.setOnClickListener(new View.OnClickListener() {
             @Override

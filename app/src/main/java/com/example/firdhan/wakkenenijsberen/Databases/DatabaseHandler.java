@@ -18,7 +18,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COL_2 = "PlayerName";
     private static final String COL_3 = "Time";
 
-    public DatabaseHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 

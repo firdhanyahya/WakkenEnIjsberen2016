@@ -33,4 +33,20 @@
                                 De pinguins zijn de ogen aan de achterkant van de dobbelsteen.</string>
     <string name="slide_2_desc_extra">De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.</string>
     <string name="slide_3_title">Veel succes!</string>
+
+    <!--Spinner Items-->
+    <string-array name="languages_for_spinner">
+        <item>Netherlands</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="how_many_dices_spinner">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
 </resources>
