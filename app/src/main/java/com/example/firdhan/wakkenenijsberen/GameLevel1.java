@@ -22,11 +22,12 @@ public class GameLevel1 extends AppCompatActivity {
 
     //Settings
     private Timer gameTimer = new Timer();
+    private PrefManager prefsManagers = new PrefManager(this);
     private Boolean showTimer;
     private Boolean showPenguins;
 
     //Verander de dice TextViews naar Imageview
-    private TextView dice1, dice2, dice3, dice4, dice5, timerTextView;
+    private TextView dice1, dice2, dice3, dice4, dice5, timerTextView, penguinsTextView;
     private EditText wakken, ijsberen, penguins;
     private Button checkAnswerButton;
     private Level1 level1 = new Level1();
@@ -50,9 +51,10 @@ public class GameLevel1 extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_game_level1);
+        showTimer = prefsManagers.getTimerSetting();
+        showPenguins = prefsManagers.getPenguinsSetting();
         //<editor-fold desc="Initialiseren van TextViews">
         //Haal in sharedPref of de speler de tijd wilt zien of niet.
-//        this.showTimer =
         dice1 = (TextView)findViewById(R.id.dice1Txt);
         dice2 = (TextView)findViewById(R.id.dice2Txt);
         dice3 = (TextView)findViewById(R.id.dice3Txt);
@@ -60,12 +62,18 @@ public class GameLevel1 extends AppCompatActivity {
         dice5 = (TextView)findViewById(R.id.dice5Txt);
         wakken = (EditText) findViewById(R.id.editText);
         ijsberen = (EditText)findViewById(R.id.editText2);
+        penguinsTextView = (TextView) findViewById(R.id.game_penguinTextView);
         penguins = (EditText)findViewById(R.id.editText3);
         checkAnswerButton = (Button) findViewById(R.id.button);
         timerTextView = (TextView) findViewById(R.id.timerTxt);
+
+        if(!showPenguins){
+            penguinsTextView.setVisibility(View.INVISIBLE);
+            penguins.setVisibility(View.VISIBLE);
+        }
         //</editor-fold>
         //Haal aantal dobbelstenen uit sharePref
-        level1.throwDice(5);
+        level1.throwDice(Integer.parseInt(prefsManagers.getDicesSetting()));
         dices = level1.getDices();
         answers = level1.getAnswer();
         startGameTimer();
@@ -107,19 +115,36 @@ public class GameLevel1 extends AppCompatActivity {
 
     //Methode voor het laten tellen van de tijd van het spel.
     public void startGameTimer(){
-        gameTimer.schedule(new TimerTask() {
-            public void run() {
-                try {
-                    timeInSecs++;
-                    int seconds = timeInSecs % 60;
-                    int minutes =  (timeInSecs % 3600) / 60;
-                    timerTextView.setText(String.format("%02d:%02d", minutes, seconds));
-                } catch (Exception e) {
-                    e.printStackTrace();
+        if(showTimer){
+            gameTimer.schedule(new TimerTask() {
+                public void run() {
+                    try {
+                        timeInSecs++;
+                        int seconds = timeInSecs % 60;
+                        int minutes =  (timeInSecs % 3600) / 60;
+                        timerTextView.setText(String.format("%02d:%02d", minutes, seconds));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
 
-        }, 0, 1000); // 1 sec
+            }, 0, 1000); // 1 sec
+        } else {
+            gameTimer.schedule(new TimerTask() {
+                public void run() {
+                    try {
+                        timeInSecs++;
+                        int seconds = timeInSecs % 60;
+                        int minutes =  (timeInSecs % 3600) / 60;
+                        timerTextView.setText(String.format("%02d:%02d", minutes, seconds));
+                        timerTextView.setVisibility(View.INVISIBLE);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }, 0, 1000); // 1 sec
+        }
     }
 
     public void askPlayerName(){
@@ -133,7 +158,12 @@ public class GameLevel1 extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 playerNameAndScore = new Highscores(input.getText().toString(), timeInSecs);
-                weiDatabase.insertData(playerNameAndScore.getPlayerName(), playerNameAndScore.getTimeInSeconds());
+                boolean addPlayerToDatabase = weiDatabase.insertData(playerNameAndScore.getPlayerName(), playerNameAndScore.getTimeInSeconds());
+                if(addPlayerToDatabase){
+                    finish();
+                } else {
+                    Toast.makeText(GameLevel1.this, "Error by adding player to the database", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -96,14 +96,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="52dp"
-        android:id="@+id/textView9" />
+        android:id="@+id/game_penguinTextView" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:layout_above="@+id/textView9"
+        android:layout_above="@+id/game_penguinTextView"
         android:layout_alignLeft="@+id/editText"
         android:layout_alignStart="@+id/editText"
         android:id="@+id/editText2" />
@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:layout_alignBottom="@+id/textView9"
+        android:layout_alignBottom="@+id/game_penguinTextView"
         android:layout_alignLeft="@+id/editText2"
         android:layout_alignStart="@+id/editText2"
         android:id="@+id/editText3" />
