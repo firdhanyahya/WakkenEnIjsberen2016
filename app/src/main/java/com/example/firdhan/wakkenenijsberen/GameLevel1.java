@@ -1,7 +1,8 @@
 package com.example.firdhan.wakkenenijsberen;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Build;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,6 @@ import com.example.firdhan.wakkenenijsberen.GameLevels.Level1;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 public class GameLevel1 extends AppCompatActivity {
 
@@ -32,10 +32,10 @@ public class GameLevel1 extends AppCompatActivity {
     private Level1 level1 = new Level1();
     private DatabaseHandler weiDatabase = new DatabaseHandler(this);
 
-    private int timeInSecs;
+    private int timeInSecs = -1;
     private int[] answers;
     private int[] dices;
-    private int tries = 0;
+    private int tries = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +61,9 @@ public class GameLevel1 extends AppCompatActivity {
         //</editor-fold>
         //Haal aantal dobbelstenen uit sharePref
         level1.throwDice(5);
-
         dices = level1.getDices();
         answers = level1.getAnswer();
+        startGameTimer();
         
         if(dices != null) {
             dice1.setText(Integer.toString(dices[0]));
@@ -73,7 +73,35 @@ public class GameLevel1 extends AppCompatActivity {
             dice5.setText(Integer.toString(dices[4]));
         }
 
-        //Tijd van het spel
+        //OnClicktListener voor het checken van antwoord
+        checkAnswerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            //<editor-fold desc="Test voor het pauzeren van het spel">
+//                tries++;
+//                if(tries % 2 == 0){
+//                    gameTimer.cancel();
+//                    Toast.makeText(GameLevel1.this, "biatch is gestopt", Toast.LENGTH_LONG).show();
+//                } else {
+//                    gameTimer = new Timer();
+//                    startGameTimer();
+//                }
+             //</editor-fold>
+                if (Integer.parseInt(wakken.getText().toString()) == answers[0] &&
+                        Integer.parseInt(ijsberen.getText().toString()) == answers[1] &&
+                        Integer.parseInt(penguins.getText().toString()) == answers[2]) {
+                    gameTimer.cancel();
+                    askPlayerName();
+                } else {
+                    tries++;
+                    Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    //Methode voor het laten tellen van de tijd van het spel.
+    public void startGameTimer(){
         gameTimer.schedule(new TimerTask() {
             public void run() {
                 try {
@@ -87,21 +115,25 @@ public class GameLevel1 extends AppCompatActivity {
             }
 
         }, 0, 1000); // 1 sec
+    }
 
-        //OnClicktListener voor het checken van antwoord
-        checkAnswerButton.setOnClickListener(new View.OnClickListener() {
+    public void askPlayerName(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Well done!");
+        builder.setMessage("Enter Player Name:");
+        final EditText input = new EditText(this);
+        input.setText("Player_1");
+        builder.setView(input);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if (Integer.parseInt(wakken.getText().toString()) == answers[0] &&
-                        Integer.parseInt(ijsberen.getText().toString()) == answers[1] &&
-                        Integer.parseInt(penguins.getText().toString()) == answers[2]) {
-                    Toast.makeText(GameLevel1.this, "Correct", Toast.LENGTH_SHORT).show();
-                } else {
-                    tries++;
-                    Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
-                }
+            public void onClick(DialogInterface dialog, int which) {
+                //TODO sla het op in de weiDatabase
             }
         });
 
+        AlertDialog dialog = builder.create();
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme; //style id
+
+        dialog.show();
     }
 }

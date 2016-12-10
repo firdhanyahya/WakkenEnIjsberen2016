@@ -42,5 +42,21 @@ public class LevelPicker extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        level2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LevelPicker.this, GameLevel1.class);
+                startActivity(i);
+            }
+        });
+
+        level3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LevelPicker.this, GameLevel1.class);
+                startActivity(i);
+            }
+        });
     }
 }
