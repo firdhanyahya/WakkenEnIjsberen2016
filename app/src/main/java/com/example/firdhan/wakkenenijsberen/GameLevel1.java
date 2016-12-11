@@ -1,6 +1,7 @@
 package com.example.firdhan.wakkenenijsberen;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +52,13 @@ public class GameLevel1 extends AppCompatActivity {
     private int[] answers;
     private int[] dices;
     private int tries = 1;
+
+    String alertWak = "1.Wak is het middelste oog van een dobbelsteen.";
+    String alertIJsbeer = "2.De ijsberen zijn de ogen om een wak heen.";
+    String alertPeng = "3.De pinguins zijn de ogen aan de achterkant van de dobbelsteen, De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.";
+
+
+    ImageButton help;
 
     //Dialog playername input
     private EditText input;
@@ -113,6 +122,30 @@ public class GameLevel1 extends AppCompatActivity {
             int resID = getResources().getIdentifier(imageName , "drawable", getPackageName());
             images[i].setImageResource(resID);
         }
+
+        //Help button//
+        help = (ImageButton)findViewById(R.id.helpBtn);
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(GameLevel1.this);
+                builder1.setTitle("Wakken en IJsberen hulp");
+                builder1.setMessage(alertWak + "\n" + alertIJsbeer + "\n" + alertPeng);
+                builder1.setCancelable(false); //kan niet buiten de dialog klikken
+
+                builder1.setPositiveButton(
+                        "Begrepen",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
+        });
+
 
         //OnClicktListener voor het checken van antwoord
         checkAnswerButton.setOnClickListener(new View.OnClickListener() {

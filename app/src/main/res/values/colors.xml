@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#a2222d78</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff4081</color>
 
     <!-- Onderste kleuren zijn bedoeld voor de intro design als je voor het eerst start-->
     <!-- Scherm achtergrond kleur-->
