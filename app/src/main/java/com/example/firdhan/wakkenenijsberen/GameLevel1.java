@@ -11,11 +11,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.firdhan.wakkenenijsberen.Databases.DatabaseHandler;
 import com.example.firdhan.wakkenenijsberen.GameLevels.Level1;
+
+import org.w3c.dom.Text;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,10 +32,15 @@ public class GameLevel1 extends AppCompatActivity {
     private Boolean showPenguins;
 
     //Verander de dice TextViews naar Imageview
-    private TextView dice1, dice2, dice3, dice4, dice5, timerTextView, penguinsTextView;
+//    private TextView dice1, dice2, dice3, dice4, dice5, timerTextView, penguinsTextView;
+    private TextView timerTextView, penguinsTextView;
     private EditText wakken, ijsberen, penguins;
     private Button checkAnswerButton;
     private Level1 level1 = new Level1();
+
+    //Imageviews
+    private ImageView dice1Img, dice2Img, dice3Img, dice4Img, dice5Img, dice6Img, dice7Img, dice8Img;
+    private ImageView[] images;
 
     private Highscores playerNameAndScore;
     private DatabaseHandler weiDatabase = new DatabaseHandler(this);
@@ -59,11 +67,22 @@ public class GameLevel1 extends AppCompatActivity {
         showPenguins = prefsManagers.getPenguinsSetting();
         //<editor-fold desc="Initialiseren van TextViews">
         //Haal in sharedPref of de speler de tijd wilt zien of niet.
-        dice1 = (TextView)findViewById(R.id.dice1Txt);
-        dice2 = (TextView)findViewById(R.id.dice2Txt);
-        dice3 = (TextView)findViewById(R.id.dice3Txt);
-        dice4 = (TextView)findViewById(R.id.dice4Txt);
-        dice5 = (TextView)findViewById(R.id.dice5Txt);
+//        dice1 = (TextView)findViewById(R.id.dice1Txt);
+//        dice2 = (TextView)findViewById(R.id.dice2Txt);
+//        dice3 = (TextView)findViewById(R.id.dice3Txt);
+//        dice4 = (TextView)findViewById(R.id.dice4Txt);
+//        dice5 = (TextView)findViewById(R.id.dice5Txt);
+
+        dice1Img = (ImageView)findViewById(R.id.dice1ImageView);
+        dice2Img = (ImageView)findViewById(R.id.dice2ImageView);
+        dice3Img = (ImageView)findViewById(R.id.dice3ImageView);
+        dice4Img = (ImageView)findViewById(R.id.dice4ImageView);
+        dice5Img = (ImageView)findViewById(R.id.dice5ImageView);
+        dice6Img = (ImageView)findViewById(R.id.dice6ImageView);
+        dice7Img = (ImageView)findViewById(R.id.dice7ImageView);
+        dice8Img = (ImageView)findViewById(R.id.dice8ImageView);
+        images  = new ImageView[] {dice1Img, dice2Img, dice3Img, dice4Img, dice5Img, dice6Img, dice7Img, dice8Img};
+
         wakken = (EditText) findViewById(R.id.editText);
         ijsberen = (EditText)findViewById(R.id.editText2);
         penguinsTextView = (TextView) findViewById(R.id.game_penguinTextView);
@@ -82,11 +101,16 @@ public class GameLevel1 extends AppCompatActivity {
         answers = level1.getAnswer();
         startGameTimer();
         
-        if(dices != null) {
-                dice1.setText(Integer.toString(dices[0]));
-                dice2.setText(Integer.toString(dices[1]));
-                dice3.setText(Integer.toString(dices[2]));
-
+//        if(dices != null) {
+//                dice1.setText(Integer.toString(dices[0]));
+//                dice2.setText(Integer.toString(dices[1]));
+//                dice3.setText(Integer.toString(dices[2]));
+//
+//        }
+        for (int i = 0; i < dices.length; i++) {
+            String imageName = "dice" + dices[i];
+            int resID = getResources().getIdentifier(imageName , "drawable", getPackageName());
+            images[i].setImageResource(resID);
         }
 
         //OnClicktListener voor het checken van antwoord
