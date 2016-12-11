@@ -2,6 +2,8 @@ package com.example.firdhan.wakkenenijsberen;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +24,7 @@ public class GameLevel1 extends AppCompatActivity {
 
     //Settings
     private Timer gameTimer = new Timer();
-    private PrefManager prefsManagers = new PrefManager(this);
+    private PrefManager prefsManagers;
     private Boolean showTimer;
     private Boolean showPenguins;
 
@@ -51,6 +53,8 @@ public class GameLevel1 extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_game_level1);
+        testShowData();
+        this.prefsManagers = new PrefManager(this);
         showTimer = prefsManagers.getTimerSetting();
         showPenguins = prefsManagers.getPenguinsSetting();
         //<editor-fold desc="Initialiseren van TextViews">
@@ -69,21 +73,20 @@ public class GameLevel1 extends AppCompatActivity {
 
         if(!showPenguins){
             penguinsTextView.setVisibility(View.INVISIBLE);
-            penguins.setVisibility(View.VISIBLE);
+            penguins.setVisibility(View.INVISIBLE);
         }
         //</editor-fold>
         //Haal aantal dobbelstenen uit sharePref
-        level1.throwDice(Integer.parseInt(prefsManagers.getDicesSetting()));
+        level1.throwDice(Integer.parseInt(prefsManagers.getDicesSetting().toString()));
         dices = level1.getDices();
         answers = level1.getAnswer();
         startGameTimer();
         
         if(dices != null) {
-            dice1.setText(Integer.toString(dices[0]));
-            dice2.setText(Integer.toString(dices[1]));
-            dice3.setText(Integer.toString(dices[2]));
-            dice4.setText(Integer.toString(dices[3]));
-            dice5.setText(Integer.toString(dices[4]));
+                dice1.setText(Integer.toString(dices[0]));
+                dice2.setText(Integer.toString(dices[1]));
+                dice3.setText(Integer.toString(dices[2]));
+
         }
 
         //OnClicktListener voor het checken van antwoord
@@ -100,15 +103,27 @@ public class GameLevel1 extends AppCompatActivity {
 //                    startGameTimer();
 //                }
              //</editor-fold>
-                if (Integer.parseInt(wakken.getText().toString()) == answers[0] &&
-                        Integer.parseInt(ijsberen.getText().toString()) == answers[1] &&
-                        Integer.parseInt(penguins.getText().toString()) == answers[2]) {
-                    gameTimer.cancel();
-                    askPlayerName();
+                if(!showPenguins){
+                    if (Integer.parseInt(wakken.getText().toString()) == answers[0] &&
+                            Integer.parseInt(ijsberen.getText().toString()) == answers[1]) {
+                        gameTimer.cancel();
+                        askPlayerName();
+                    } else {
+                        tries++;
+                        Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    tries++;
-                    Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
+                    if (Integer.parseInt(wakken.getText().toString()) == answers[0] &&
+                            Integer.parseInt(ijsberen.getText().toString()) == answers[1] &&
+                            Integer.parseInt(penguins.getText().toString()) == answers[2]) {
+                        gameTimer.cancel();
+                        askPlayerName();
+                    } else {
+                        tries++;
+                        Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
             }
         });
     }
@@ -171,5 +186,21 @@ public class GameLevel1 extends AppCompatActivity {
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme; //style id
 
         dialog.show();
+    }
+
+    public void testShowData(){
+        SQLiteDatabase db = weiDatabase.getWritableDatabase();
+        Cursor res = db.rawQuery("Select * from WeIHighscores ORDER BY Time", null);
+        if(res.getCount() == 0){
+            Toast.makeText(this, "nothing found", Toast.LENGTH_SHORT).show();
+        } else {
+            StringBuffer buffer = new StringBuffer();
+            while(res.moveToNext()){
+                buffer.append("ID :" + res.getInt(0) + "\n");
+                buffer.append("PlayerName :" + res.getString(1) + "\n");
+                buffer.append("Time played :" + res.getString(2) + "\n\n");
+            }
+            Toast.makeText(this, buffer.toString(), Toast.LENGTH_LONG).show();
+        }
     }
 }

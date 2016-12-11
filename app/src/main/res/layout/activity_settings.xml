@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-    </FrameLayout>
+    android:layout_height="match_parent"
+    android:background="@drawable/test_background">
 
     <TextView
         android:text="Timer"
@@ -23,7 +17,8 @@
         android:layout_alignLeft="@+id/penguinsTxt"
         android:layout_alignStart="@+id/penguinsTxt"
         android:layout_alignRight="@+id/penguinsTxt"
-        android:layout_alignEnd="@+id/penguinsTxt" />
+        android:layout_alignEnd="@+id/penguinsTxt"
+        android:textColor="#fff" />
 
     <TextView
         android:text="Taal"
@@ -36,18 +31,8 @@
         android:layout_alignRight="@+id/timerTxt"
         android:layout_alignEnd="@+id/timerTxt"
         android:layout_alignLeft="@+id/timerTxt"
-        android:layout_alignStart="@+id/timerTxt" />
-
-    <Switch
-        android:text="On"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/timerTxt"
-        android:layout_alignLeft="@+id/penguinSwitch"
-        android:layout_alignStart="@+id/penguinSwitch"
-        android:id="@+id/timerSwitch"
-        android:checked="true"
-        android:layout_marginTop="50dp" />
+        android:layout_alignStart="@+id/timerTxt"
+        android:textColor="#fff" />
 
     <Spinner
         android:layout_width="match_parent"
@@ -61,31 +46,6 @@
         android:layout_alignEnd="@+id/languageSpinner"
         android:layout_alignBaseline="@+id/dicesTxt" />
 
-    <Spinner
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/languageSpinner"
-        android:layout_above="@+id/dicesTxt"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_alignBaseline="@+id/languageTxt" />
-
-    <TextView
-        android:text="Penguins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:id="@+id/penguinsTxt"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="29dp"
-        android:layout_marginStart="29dp" />
-
     <TextView
         android:text="Dobbelstenen"
         android:layout_width="wrap_content"
@@ -95,7 +55,42 @@
         android:textAppearance="@android:style/TextAppearance.Material.Large"
         android:layout_below="@+id/languageTxt"
         android:layout_alignLeft="@+id/languageTxt"
-        android:layout_alignStart="@+id/languageTxt" />
+        android:layout_alignStart="@+id/languageTxt"
+        android:textColor="#fff" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    </FrameLayout>
+
+    <TextView
+        android:text="Penguins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:id="@+id/penguinsTxt"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#fff" />
+
+    <Switch
+        android:text="On"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timerSwitch"
+        android:checked="true"
+        android:layout_above="@+id/languageTxt"
+        android:layout_alignLeft="@+id/penguinSwitch"
+        android:layout_alignStart="@+id/penguinSwitch"
+        android:textColor="#fff" />
 
     <Switch
         android:text="On"
@@ -103,10 +98,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/penguinSwitch"
         android:checked="true"
-        android:layout_alignTop="@+id/penguinsTxt"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
+        android:textColor="#fff"
+        android:layout_above="@+id/timerTxt"
         android:layout_alignLeft="@+id/languageSpinner"
-        android:layout_alignStart="@+id/languageSpinner"
-        android:layout_marginLeft="46dp"
-        android:layout_marginStart="46dp" />
+        android:layout_alignStart="@+id/languageSpinner" />
+
+    <Spinner
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/languageSpinner"
+        android:layout_above="@+id/dicesSpinner"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBaseline="@+id/languageTxt"
+        android:animateLayoutChanges="false" />
 
 </RelativeLayout>
