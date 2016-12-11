@@ -2,6 +2,7 @@ package com.example.firdhan.wakkenenijsberen;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
@@ -142,6 +143,8 @@ public class GameLevel1 extends AppCompatActivity {
                             Integer.parseInt(penguins.getText().toString()) == answers[2]) {
                         gameTimer.cancel();
                         askPlayerName();
+                        Intent i = new Intent(GameLevel1.this, LevelPassed.class);
+                        startActivity(i);
                     } else {
                         tries++;
                         Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();

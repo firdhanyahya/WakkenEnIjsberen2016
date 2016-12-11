@@ -50,4 +50,8 @@
         <item>8</item>
     </string-array>
 
+    <!--Facebook sharing Robin ID-->
+    <string name="facebook_app_id">141055453046668</string>
+    <string name="title_activity_level_passed">LevelPassed</string>
+
 </resources>
