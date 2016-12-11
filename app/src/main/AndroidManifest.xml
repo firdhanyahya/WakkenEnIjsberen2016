@@ -42,6 +42,7 @@
         <activity android:name=".GameLevel1" />
         <activity android:name=".HowToPlay" />
         <activity android:name=".Settings" />
+        <activity android:name=".HighscoreActivity" />
         <activity android:name=".LevelPicker" />
 
         <meta-data
