@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/test_background">
+    android:background="@color/dot_dark_screen3">
 
     <TextView
         android:text="Timer"
@@ -13,7 +13,6 @@
         android:layout_below="@+id/penguinsTxt"
         android:layout_marginTop="50dp"
         android:id="@+id/timerTxt"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
         android:layout_alignLeft="@+id/penguinsTxt"
         android:layout_alignStart="@+id/penguinsTxt"
         android:layout_alignRight="@+id/penguinsTxt"
@@ -27,7 +26,6 @@
         android:layout_below="@+id/timerTxt"
         android:layout_marginTop="50dp"
         android:id="@+id/languageTxt"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
         android:layout_alignRight="@+id/timerTxt"
         android:layout_alignEnd="@+id/timerTxt"
         android:layout_alignLeft="@+id/timerTxt"
@@ -52,7 +50,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:id="@+id/dicesTxt"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
         android:layout_below="@+id/languageTxt"
         android:layout_alignLeft="@+id/languageTxt"
         android:layout_alignStart="@+id/languageTxt"
@@ -73,7 +70,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:id="@+id/penguinsTxt"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
         android:layout_alignParentTop="true"
