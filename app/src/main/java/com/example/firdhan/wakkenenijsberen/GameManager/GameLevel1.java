@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.example.firdhan.wakkenenijsberen.Databases.DBHandler;
 import com.example.firdhan.wakkenenijsberen.GameLevels.Level1;
 import com.example.firdhan.wakkenenijsberen.Highscores;
+import com.example.firdhan.wakkenenijsberen.LevelPassed;
 import com.example.firdhan.wakkenenijsberen.PrefManager;
 import com.example.firdhan.wakkenenijsberen.R;
 import com.facebook.FacebookSdk;
@@ -153,6 +155,7 @@ public class GameLevel1 extends AppCompatActivity {
             }
         });
         //</editor-fold>
+
         //<editor-fold desc="OnClicktListener voor het checken van antwoord">
         checkAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,7 +173,6 @@ public class GameLevel1 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
-                            //TODO De hint moet ook nog
                             Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -187,7 +189,6 @@ public class GameLevel1 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
-                            //TODO maak een methode voor de hint met dialog ?
                             Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -252,15 +253,15 @@ public class GameLevel1 extends AppCompatActivity {
         timeplayertv.setText("Time Played: " + String.format("%02d:%02d", minutes, seconds));
         //</editor-fold>
         input = (EditText) dialog.findViewById(R.id.playerNameEditText);
-        input.setText("Player_1");
+        input.setHint("Player_1");
 
         //<editor-fold desc="Share Button">
         if(!input.getText().toString().trim().isEmpty()) {
             ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
             ShareLinkContent content = new ShareLinkContent.Builder()
-                    .setContentTitle("Share Ja")
-                    .setContentDescription(input.getText().toString() + " heeft het spel gesliced")
-                    .build();
+                    .setContentTitle(input.getText().toString() + " heeft een level gehaald in Wakken en IJsberen")
+                    .setContentDescription(String.format("%02d:%02d", minutes, seconds) + " tijd")
+                    .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
             shareButton.setShareContent(content);
         }
         //</editor-fold>

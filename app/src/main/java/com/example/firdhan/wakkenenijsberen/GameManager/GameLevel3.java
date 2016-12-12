@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.firdhan.wakkenenijsberen.Databases.DBHandler;
-import com.example.firdhan.wakkenenijsberen.GameLevels.Level2;
+import com.example.firdhan.wakkenenijsberen.GameLevels.Level3;
 import com.example.firdhan.wakkenenijsberen.Highscores;
 import com.example.firdhan.wakkenenijsberen.PrefManager;
 import com.example.firdhan.wakkenenijsberen.R;
@@ -31,7 +31,7 @@ import com.facebook.share.widget.ShareButton;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GameLevel2 extends AppCompatActivity {
+public class GameLevel3 extends AppCompatActivity {
 
     //<editor-fold desc="Velden">
     //Settings
@@ -46,7 +46,7 @@ public class GameLevel2 extends AppCompatActivity {
     private TextView timerTextView, penguinsTextView;
     private EditText wakken, ijsberen, penguins;
     private Button checkAnswerButton;
-    private Level2 level2 = new Level2();
+    private Level3 level3 = new Level3();
 
     //Imageviews
     private ImageView dice1Img, dice2Img, dice3Img, dice4Img, dice5Img, dice6Img, dice7Img, dice8Img;
@@ -115,9 +115,9 @@ public class GameLevel2 extends AppCompatActivity {
         //Aantal dobbelstenen aangeven en werpen
         //Sla het antwoord op in een array
         // en haal alle geworpen dobbelstenen
-        level2.throwDice(dicesCount);
-        dices = level2.getDices();
-        answers = level2.getAnswer();
+        level3.throwDice(dicesCount);
+        dices = level3.getDices();
+        answers = level3.getAnswer();
 
         //Timer zodra het spel begint
         startGameTimer();
@@ -135,7 +135,7 @@ public class GameLevel2 extends AppCompatActivity {
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(GameLevel2.this);
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(GameLevel3.this);
                 builder1.setTitle("Wakken en IJsberen hulp");
                 builder1.setMessage(alertWak + "\n" + alertIJsbeer + "\n" + alertPeng);
                 builder1.setCancelable(false); //kan niet buiten de dialog klikken
@@ -153,7 +153,6 @@ public class GameLevel2 extends AppCompatActivity {
             }
         });
         //</editor-fold>
-
         //<editor-fold desc="OnClicktListener voor het checken van antwoord">
         checkAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,11 +170,8 @@ public class GameLevel2 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
-                            if(tries == 5 || tries == 10){
-                                showDialogHints();
-                            }
                             //TODO De hint moet ook nog
-                            Toast.makeText(GameLevel2.this, "False", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GameLevel3.this, "False", Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
@@ -191,11 +187,8 @@ public class GameLevel2 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
-                            if(tries == 5 || tries == 10){
-                                showDialogHints();
-                            }
                             //TODO maak een methode voor de hint met dialog ?
-                            Toast.makeText(GameLevel2.this, "False", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GameLevel3.this, "False", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -244,7 +237,7 @@ public class GameLevel2 extends AppCompatActivity {
         //* custom font \\*
         Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
         FacebookSdk.sdkInitialize(getApplicationContext());
-        final Dialog dialog = new Dialog(GameLevel2.this);
+        final Dialog dialog = new Dialog(GameLevel3.this);
         dialog.setContentView(R.layout.ask_playername_dialog);
         dialog.setCancelable(false);
         int seconds = timeInSecs % 60;
@@ -285,12 +278,12 @@ public class GameLevel2 extends AppCompatActivity {
                 } else {
                     playerNameAndScore = new Highscores(input.getText().toString(), timeInSecs);
                     boolean insertScoreToDatabase = weiDatabase.insertData(playerNameAndScore.getPlayerName()
-                            , playerNameAndScore.getTimeInSeconds(), "Level2");
+                            , playerNameAndScore.getTimeInSeconds(), "Level3");
                     if (insertScoreToDatabase) {
                         finish();
-                        Toast.makeText(GameLevel2.this, "Score is successfully added to the database", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GameLevel3.this, "Score is successfully added to the database", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(GameLevel2.this, "Error by adding score to the database. Please try again", Toast.LENGTH_LONG).show();
+                        Toast.makeText(GameLevel3.this, "Error by adding score to the database. Please try again", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -298,9 +291,10 @@ public class GameLevel2 extends AppCompatActivity {
         //</editor-fold>
 
         //<editor-fold desc="Next Level Button">
-        Button nextLevel = (Button) dialog.findViewById(R.id.dialog_nextlevel);
-        nextLevel.setTypeface(iceFont);
-        nextLevel.setOnClickListener(new View.OnClickListener() {
+        Button backtoLevelPicker = (Button) dialog.findViewById(R.id.dialog_nextlevel);
+        backtoLevelPicker.setTypeface(iceFont);
+        backtoLevelPicker.setText("Level Picker");
+        backtoLevelPicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO Sla de naam op en door naar de volgende level
@@ -309,22 +303,21 @@ public class GameLevel2 extends AppCompatActivity {
                     input.setHint("Please Enter Your name");
                 } else {
                     //Finish() zorgt ervoor dat als de gebruiker op back button klikt
-                    //dat de GameLevel2 activity niet meer getoond wordt
+                    //dat de GameLevel3 activity niet meer getoond wordt
                     playerNameAndScore = new Highscores(input.getText().toString(), timeInSecs);
                     boolean insertScoreToDatabase = weiDatabase.insertData(playerNameAndScore.getPlayerName()
-                            , playerNameAndScore.getTimeInSeconds(), "Level2");
+                            , playerNameAndScore.getTimeInSeconds(), "Level3");
                     if (insertScoreToDatabase) {
-                        Toast.makeText(GameLevel2.this, "Score is successfully added to the database", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GameLevel3.this, "Score is successfully added to the database", Toast.LENGTH_SHORT).show();
                         finish();
-                        Intent i = new Intent(GameLevel2.this, GameLevel3.class);
-                        startActivity(i);
                     } else {
-                        Toast.makeText(GameLevel2.this, "Error by adding score to the database. Please try again", Toast.LENGTH_LONG).show();
+                        Toast.makeText(GameLevel3.this, "Error by adding score to the database. Please try again", Toast.LENGTH_LONG).show();
                     }
                 }
             }
         });
         //</editor-fold>
+        //Transition voor de dialog
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme; //style id
         dialog.show();
     }
@@ -347,10 +340,10 @@ public class GameLevel2 extends AppCompatActivity {
     }
 
     public void showDialogHints(){
-        String variantLevel2 = "1. Wakken {0,0,0,1,1,1}\n"
-                + "2. Ijsberen {0,1,0,2,0,3}\n"
-                + "3. Penguins {6,5,0,3,0,1}";
-        AlertDialog.Builder hintDialog = new AlertDialog.Builder(GameLevel2.this);
+        String variantLevel2 = "1. Wakken {0,1,1,1,1,1}\n"
+                + "2. Ijsberen {0,1,1,2,2,2}\n"
+                + "3. Penguins {6,5,4,3,2,1}";
+        AlertDialog.Builder hintDialog = new AlertDialog.Builder(GameLevel3.this);
         hintDialog.setTitle("Hint");
         hintDialog.setMessage("Varianten voor deze level: \n" + variantLevel2);
         hintDialog.setCancelable(false); //kan niet buiten de dialog klikken
