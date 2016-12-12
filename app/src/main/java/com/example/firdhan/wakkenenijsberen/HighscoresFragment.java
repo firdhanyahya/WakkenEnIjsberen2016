@@ -2,6 +2,7 @@ package com.example.firdhan.wakkenenijsberen;
 
 import android.app.Fragment;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -40,7 +41,7 @@ public class HighscoresFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_highscores, container, false);
-
+        Typeface iceFont = Typeface.createFromAsset(getActivity().getAssets(), "grandice_regular.ttf");
         db = new DBHandler(getActivity());
 
         name1 = (TextView)v.findViewById(R.id.name1Txt);
@@ -73,6 +74,9 @@ public class HighscoresFragment extends Fragment {
         level1 = (Button)v.findViewById(R.id.lvl1ScoreBtn);
         level2 = (Button)v.findViewById(R.id.lvl2ScoreBtn);
         level3 = (Button)v.findViewById(R.id.lvl3ScoreBtn);
+        level1.setTypeface(iceFont);
+        level2.setTypeface(iceFont);
+        level3.setTypeface(iceFont);
 
         frameScores = (FrameLayout)v.findViewById(R.id.frameScores);
 
