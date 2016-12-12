@@ -280,7 +280,7 @@ public class GameLevel1 extends AppCompatActivity {
                 ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
                 content = new ShareLinkContent.Builder()
                         .setContentTitle(name + " Heeft een level gehaald in Wakken en IJsberen")
-                        .setContentDescription(String.format("%02d:%02d", minutes, seconds) + "in Wakken en IJsberen")
+                        .setQuote("Hij/zij een level gehaald met tijd: " + String.format("%02d:%02d", minutes, seconds))
                         .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
                 shareButton.setShareContent(content);
             }
@@ -293,7 +293,7 @@ public class GameLevel1 extends AppCompatActivity {
                 ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
                 content = new ShareLinkContent.Builder()
                         .setContentTitle(name + " Heeft een level gehaald in Wakken en IJsberen")
-                        .setContentDescription(String.format("%02d:%02d", minutes, seconds) + "in Wakken en IJsberen")
+                        .setQuote("Hij/zij een level gehaald met tijd: " + String.format("%02d:%02d", minutes, seconds))
                         .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
                 shareButton.setShareContent(content);
             }
