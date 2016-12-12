@@ -1,11 +1,10 @@
 <resources>
     <!--Main Menu-->
     <string name="app_name">Wakken en IJsberen</string>
-    <string name="play">Play</string>
-    <string name="howto">How to Play</string>
-    <string name="settings">Settings</string>
+    <string name="play">Spelen</string>
+    <string name="howto">Uitleg</string>
+    <string name="settings">Instellingen</string>
     <string name="highscores">Highscores</string>
-    <string name="about_us">About us</string>
     <string name="madeby">Gemaakt door: Robin Tatlici, Firdhan Yahya, James Morsink</string>
 
     <!--Intro Slider-->
@@ -51,7 +50,7 @@
     </string-array>
 
     <!--Facebook sharing Robin ID-->
-    <string name="facebook_app_id">141055453046668</string>
-    <string name="title_activity_level_passed">LevelPassed</string>
+    <string name="facebook_app_id" translatable="false">141055453046668</string>
+    <string name="title_activity_level_passed" translatable="false">LevelPassed</string>
 
 </resources>
