@@ -1,6 +1,7 @@
 package com.example.firdhan.wakkenenijsberen;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,10 +29,8 @@ public class MainActivity extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_main);
-
         tv = (TextView)findViewById(R.id.scrollingText);
         tv.setSelected(true);
-
         //* custom font voor de main screen \\*
         Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
 

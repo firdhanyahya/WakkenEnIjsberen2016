@@ -1,11 +1,10 @@
-package com.example.firdhan.wakkenenijsberen;
+package com.example.firdhan.wakkenenijsberen.GameManager;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,16 +17,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.firdhan.wakkenenijsberen.Databases.DatabaseHandler;
-import com.example.firdhan.wakkenenijsberen.GameLevels.Level1;
-
-import org.w3c.dom.Text;
+import com.example.firdhan.wakkenenijsberen.Databases.DBHandler;
+import com.example.firdhan.wakkenenijsberen.GameLevels.Level2;
+import com.example.firdhan.wakkenenijsberen.Highscores;
+import com.example.firdhan.wakkenenijsberen.PrefManager;
+import com.example.firdhan.wakkenenijsberen.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GameLevel1 extends AppCompatActivity {
-
+public class GameLevel2 extends AppCompatActivity {
+    //<editor-fold desc="Velden">
     //Settings
     private Timer gameTimer = new Timer();
     private PrefManager prefsManagers;
@@ -39,14 +39,14 @@ public class GameLevel1 extends AppCompatActivity {
     private TextView timerTextView, penguinsTextView;
     private EditText wakken, ijsberen, penguins;
     private Button checkAnswerButton;
-    private Level1 level1 = new Level1();
+    private Level2 level2 = new Level2();
 
     //Imageviews
     private ImageView dice1Img, dice2Img, dice3Img, dice4Img, dice5Img, dice6Img, dice7Img, dice8Img;
     private ImageView[] images;
 
     private Highscores playerNameAndScore;
-    private DatabaseHandler weiDatabase = new DatabaseHandler(this);
+    private DBHandler weiDatabase = new DBHandler(this);
 
     private int timeInSecs = -1;
     private int[] answers;
@@ -63,6 +63,7 @@ public class GameLevel1 extends AppCompatActivity {
     //Dialog playername input
     private EditText input;
 
+    //</editor-fold>
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,19 +71,12 @@ public class GameLevel1 extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
-        setContentView(R.layout.activity_game_level1);
-        testShowData();
+        setContentView(R.layout.activity_game_level2);
+        //Haal alle settings die de gebruiker heeft gekozen
         this.prefsManagers = new PrefManager(this);
         showTimer = prefsManagers.getTimerSetting();
         showPenguins = prefsManagers.getPenguinsSetting();
-        //<editor-fold desc="Initialiseren van TextViews">
-        //Haal in sharedPref of de speler de tijd wilt zien of niet.
-//        dice1 = (TextView)findViewById(R.id.dice1Txt);
-//        dice2 = (TextView)findViewById(R.id.dice2Txt);
-//        dice3 = (TextView)findViewById(R.id.dice3Txt);
-//        dice4 = (TextView)findViewById(R.id.dice4Txt);
-//        dice5 = (TextView)findViewById(R.id.dice5Txt);
-
+        //<editor-fold desc="Initialiseren van ImageViews en EditText">
         dice1Img = (ImageView)findViewById(R.id.dice1ImageView);
         dice2Img = (ImageView)findViewById(R.id.dice2ImageView);
         dice3Img = (ImageView)findViewById(R.id.dice3ImageView);
@@ -105,18 +99,18 @@ public class GameLevel1 extends AppCompatActivity {
             penguins.setVisibility(View.INVISIBLE);
         }
         //</editor-fold>
+
         //Haal aantal dobbelstenen uit sharePref
-        level1.throwDice(Integer.parseInt(prefsManagers.getDicesSetting().toString()));
-        dices = level1.getDices();
-        answers = level1.getAnswer();
+        //Aantal dobbelstenen aangeven en werpen
+        //Sla het antwoord op in een array
+        // en haal alle geworpen dobbelstenen
+        level2.throwDice(Integer.parseInt(prefsManagers.getDicesSetting().toString()));
+        dices = level2.getDices();
+        answers = level2.getAnswer();
+
+        //Timer zodra het spel begint
         startGameTimer();
-        
-//        if(dices != null) {
-//                dice1.setText(Integer.toString(dices[0]));
-//                dice2.setText(Integer.toString(dices[1]));
-//                dice3.setText(Integer.toString(dices[2]));
-//
-//        }
+
         for (int i = 0; i < dices.length; i++) {
             String imageName = "dice" + dices[i];
             int resID = getResources().getIdentifier(imageName , "drawable", getPackageName());
@@ -128,7 +122,7 @@ public class GameLevel1 extends AppCompatActivity {
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(GameLevel1.this);
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(GameLevel2.this);
                 builder1.setTitle("Wakken en IJsberen hulp");
                 builder1.setMessage(alertWak + "\n" + alertIJsbeer + "\n" + alertPeng);
                 builder1.setCancelable(false); //kan niet buiten de dialog klikken
@@ -151,16 +145,6 @@ public class GameLevel1 extends AppCompatActivity {
         checkAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //<editor-fold desc="Test voor het pauzeren van het spel">
-//                tries++;
-//                if(tries % 2 == 0){
-//                    gameTimer.cancel();
-//                    Toast.makeText(GameLevel1.this, "biatch is gestopt", Toast.LENGTH_LONG).show();
-//                } else {
-//                    gameTimer = new Timer();
-//                    startGameTimer();
-//                }
-             //</editor-fold>
                 if(!showPenguins){
                     if (Integer.parseInt(wakken.getText().toString()) == answers[0] &&
                             Integer.parseInt(ijsberen.getText().toString()) == answers[1]) {
@@ -168,7 +152,7 @@ public class GameLevel1 extends AppCompatActivity {
                         askPlayerName();
                     } else {
                         tries++;
-                        Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GameLevel2.this, "False", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     if (Integer.parseInt(wakken.getText().toString()) == answers[0] &&
@@ -176,11 +160,11 @@ public class GameLevel1 extends AppCompatActivity {
                             Integer.parseInt(penguins.getText().toString()) == answers[2]) {
                         gameTimer.cancel();
                         askPlayerName();
-                        Intent i = new Intent(GameLevel1.this, LevelPassed.class);
-                        startActivity(i);
+//                        Intent i = new Intent(GameLevel2.this, LevelPassed.class);
+//                        startActivity(i);
                     } else {
                         tries++;
-                        Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GameLevel2.this, "False", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -223,34 +207,65 @@ public class GameLevel1 extends AppCompatActivity {
     }
 
     public void askPlayerName(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Well done!");
-        builder.setMessage("Enter Player Name:");
+        int seconds = timeInSecs % 60;
+        int minutes =  (timeInSecs % 3600) / 60;
         input = new EditText(this);
         input.setText("Player_1");
-        builder.setView(input);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        AlertDialog dialog = new AlertDialog.Builder(GameLevel2.this)
+                .setTitle("Well done!")
+                .setMessage("Time played: " + String.format("%02d:%02d", minutes, seconds) + "\nEnter player name:")
+                .setView(input)
+                .setNeutralButton("Share", null)
+                .setNegativeButton("Submit", null)
+                .setPositiveButton("Next Level", null)
+                .setCancelable(false)
+                .create();
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme; //style id
+        dialog.show();
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                playerNameAndScore = new Highscores(input.getText().toString(), timeInSecs);
-                boolean addPlayerToDatabase = weiDatabase.insertData(playerNameAndScore.getPlayerName(), playerNameAndScore.getTimeInSeconds());
-                if(addPlayerToDatabase){
-                    finish();
-                } else {
-                    Toast.makeText(GameLevel1.this, "Error by adding player to the database", Toast.LENGTH_SHORT).show();
-                }
+            public void onShow(DialogInterface dialog) {
+                //* custom font \\*
+                Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
+
+                //<editor-fold desc="Share to Facebook button">
+                Button shareButton = ((AlertDialog)dialog).getButton(AlertDialog.BUTTON_NEUTRAL);
+                shareButton.setTypeface(iceFont);
+                shareButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //TODO Share to facebook functie
+                    }
+                });
+                //</editor-fold>
+                //<editor-fold desc="Submit button">
+                Button submitButton = ((AlertDialog)dialog).getButton(AlertDialog.BUTTON_NEGATIVE);
+                submitButton.setTypeface(iceFont);
+                submitButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //TODO Sla de naam op en terug naar level picker
+                        //Kijk eerst of de naam text edit niet leeg is.
+                    }
+                });
+                //</editor-fold>
+                Button nextLevelButton = ((AlertDialog)dialog).getButton(AlertDialog.BUTTON_NEGATIVE);
+                nextLevelButton.setTypeface(iceFont);
+                nextLevelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //TODO Sla de naam op en door naar de volgende level
+                        //Kijk eerst of de naam text edit niet leeg is.
+                    }
+                });
             }
         });
-
-        AlertDialog dialog = builder.create();
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme; //style id
-
-        dialog.show();
     }
 
     public void testShowData(){
         SQLiteDatabase db = weiDatabase.getWritableDatabase();
-        Cursor res = db.rawQuery("Select * from WeIHighscores ORDER BY Time", null);
+        Cursor res = db.rawQuery("Select * from GameHighscores ORDER BY Time", null);
         if(res.getCount() == 0){
             Toast.makeText(this, "nothing found", Toast.LENGTH_SHORT).show();
         } else {
@@ -263,4 +278,5 @@ public class GameLevel1 extends AppCompatActivity {
             Toast.makeText(this, buffer.toString(), Toast.LENGTH_LONG).show();
         }
     }
+
 }

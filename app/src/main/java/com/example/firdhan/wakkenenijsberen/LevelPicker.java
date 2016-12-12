@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.example.firdhan.wakkenenijsberen.GameManager.GameLevel1;
+import com.example.firdhan.wakkenenijsberen.GameManager.GameLevel2;
+
 public class LevelPicker extends AppCompatActivity {
 
     Button level1;
@@ -46,7 +49,7 @@ public class LevelPicker extends AppCompatActivity {
         level2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LevelPicker.this, GameLevel1.class);
+                Intent i = new Intent(LevelPicker.this, GameLevel2.class);
                 startActivity(i);
             }
         });
