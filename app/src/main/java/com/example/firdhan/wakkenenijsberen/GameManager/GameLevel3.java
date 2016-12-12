@@ -7,9 +7,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -70,6 +73,8 @@ public class GameLevel3 extends AppCompatActivity {
 
     //Dialog playername input
     private EditText input;
+    private String name;
+    private ShareLinkContent content;
 
     //</editor-fold>
     @Override
@@ -271,16 +276,38 @@ public class GameLevel3 extends AppCompatActivity {
         input = (EditText) dialog.findViewById(R.id.playerNameEditText);
         input.setHint("Player_1");
 
-        //<editor-fold desc="Share Button">
-        if(!input.getText().toString().trim().isEmpty()) {
-            ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
-            ShareLinkContent content = new ShareLinkContent.Builder()
-                    .setContentTitle("Share Ja")
-                    .setContentDescription(input.getText().toString() + " heeft het spel gesliced")
-                    .build();
-            shareButton.setShareContent(content);
-        }
-        //</editor-fold>
+        input.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                name = input.getText().toString();
+                int seconds = timeInSecs % 60;
+                int minutes = (timeInSecs % 3600) / 60;
+                ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
+                content = new ShareLinkContent.Builder()
+                        .setContentTitle(name + " Heeft een level gehaald in Wakken en IJsberen")
+                        .setContentDescription(String.format("%02d:%02d", minutes, seconds) + "in Wakken en IJsberen")
+                        .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
+                shareButton.setShareContent(content);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                name = input.getText().toString();
+                int seconds = timeInSecs % 60;
+                int minutes = (timeInSecs % 3600) / 60;
+                ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
+                content = new ShareLinkContent.Builder()
+                        .setContentTitle(name + " Heeft een level gehaald in Wakken en IJsberen")
+                        .setContentDescription(String.format("%02d:%02d", minutes, seconds) + "in Wakken en IJsberen")
+                        .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
+                shareButton.setShareContent(content);
+            }
+        });
 
         //<editor-fold desc="Submit Button">
         Button submitButton = (Button) dialog.findViewById(R.id.dialog_submit);
@@ -337,23 +364,6 @@ public class GameLevel3 extends AppCompatActivity {
         //Transition voor de dialog
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme; //style id
         dialog.show();
-    }
-
-    public void testShowData() {
-        SQLiteDatabase db = weiDatabase.getReadableDatabase();
-        Cursor res = db.rawQuery("Select * from HighscoresTable ORDER BY Time", null);
-        if (res.getCount() == 0) {
-            Toast.makeText(this, "nothing found", Toast.LENGTH_SHORT).show();
-        } else {
-            StringBuffer buffer = new StringBuffer();
-            while (res.moveToNext()) {
-                buffer.append("ID :" + res.getInt(0) + "\n");
-                buffer.append("PlayerName :" + res.getString(1) + "\n");
-                buffer.append("Time played :" + res.getString(2) + "\n" +
-                        "Level : " + res.getString(3) + "\n");
-            }
-            Toast.makeText(this, buffer.toString(), Toast.LENGTH_LONG).show();
-        }
     }
 
     public void showDialogHints(){

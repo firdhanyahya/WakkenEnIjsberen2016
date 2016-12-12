@@ -11,6 +11,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -49,7 +52,7 @@ public class GameLevel1 extends AppCompatActivity {
     //Verander de dice TextViews naar Imageview
 //    private TextView dice1, dice2, dice3, dice4, dice5, timerTextView, penguinsTextView;
     private TextView timerTextView, penguinsTextView;
-    private EditText wakken, ijsberen, penguins;
+    private EditText wakken, ijsberen, penguins, input;
     private Button checkAnswerButton;
     private Level1 level1 = new Level1();
 
@@ -69,11 +72,9 @@ public class GameLevel1 extends AppCompatActivity {
     String alertIJsbeer = "2.De ijsberen zijn de ogen om een wak heen.";
     String alertPeng = "3.De pinguins zijn de ogen aan de achterkant van de dobbelsteen, De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.";
 
-
     ImageButton help, pause;
-
-    //Dialog playername input
-    private EditText input;
+    String name;
+    ShareLinkContent content;
 
     //</editor-fold>
     @Override
@@ -84,6 +85,7 @@ public class GameLevel1 extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_game_level1);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         //Custom font
         Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
 
@@ -247,7 +249,6 @@ public class GameLevel1 extends AppCompatActivity {
     public void askPlayerName() {
         //* custom font \\*
         Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
-        FacebookSdk.sdkInitialize(getApplicationContext());
         final Dialog dialog = new Dialog(GameLevel1.this);
         dialog.setContentView(R.layout.ask_playername_dialog);
         dialog.setCancelable(true);
@@ -265,16 +266,38 @@ public class GameLevel1 extends AppCompatActivity {
         input = (EditText) dialog.findViewById(R.id.playerNameEditText);
         input.setHint("Player_1");
 
-        //<editor-fold desc="Share Button">
-        if(!input.getHint().toString().trim().isEmpty()) {
-            ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
-            ShareLinkContent content = new ShareLinkContent.Builder()
-                    .setContentTitle(input.getHint().toString() + " heeft een level gehaald in Wakken en IJsberen")
-                    .setContentDescription(String.format("%02d:%02d", minutes, seconds) + " tijd")
-                    .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
-            shareButton.setShareContent(content);
-        }
-        //</editor-fold>
+        input.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                name = input.getText().toString();
+                int seconds = timeInSecs % 60;
+                int minutes = (timeInSecs % 3600) / 60;
+                ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
+                content = new ShareLinkContent.Builder()
+                        .setContentTitle(name + " Heeft een level gehaald in Wakken en IJsberen")
+                        .setContentDescription(String.format("%02d:%02d", minutes, seconds) + "in Wakken en IJsberen")
+                        .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
+                shareButton.setShareContent(content);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                name = input.getText().toString();
+                int seconds = timeInSecs % 60;
+                int minutes = (timeInSecs % 3600) / 60;
+                ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
+                content = new ShareLinkContent.Builder()
+                        .setContentTitle(name + " Heeft een level gehaald in Wakken en IJsberen")
+                        .setContentDescription(String.format("%02d:%02d", minutes, seconds) + "in Wakken en IJsberen")
+                        .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
+                shareButton.setShareContent(content);
+            }
+        });
         //<editor-fold desc="Submit Button">
         Button submitButton = (Button) dialog.findViewById(R.id.dialog_submit);
         submitButton.setTypeface(iceFont);
