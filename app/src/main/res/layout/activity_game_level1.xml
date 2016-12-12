@@ -40,7 +40,7 @@
         android:layout_alignParentLeft="true" />
 
     <TextView
-        android:text="Ijsberen"
+        android:text="@string/ijsbeer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/wakkenTxt"
@@ -52,7 +52,7 @@
         android:background="@color/bg_screen3" />
 
     <TextView
-        android:text="Penguins"
+        android:text="@string/Penguins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/IJsberenTxt"
@@ -87,7 +87,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Wakken"
+        android:text="@string/wak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/wakkenTxt"

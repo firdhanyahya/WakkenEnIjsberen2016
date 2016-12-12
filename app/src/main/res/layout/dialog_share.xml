@@ -45,17 +45,6 @@
             android:textColor="@android:color/white" />
     </LinearLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Playername here"
-        android:ems="10"
-        android:id="@+id/playerNameEditText"
-        android:layout_marginBottom="46dp"
-        android:layout_alignBottom="@+id/linearLayout2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <TextView
         android:id="@+id/dialog_info"
         android:layout_width="match_parent"
@@ -88,6 +77,19 @@
         android:layout_centerHorizontal="true"
         android:textSize="18sp"
         android:textColor="@color/com_facebook_button_background_color_pressed"
-        android:hint="Enter Player Name: " />
+        android:hint="Enter Player Name: "
+        android:background="@color/bg_screen3" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Playername here"
+        android:ems="10"
+        android:id="@+id/playerNameEditText"
+        android:layout_marginBottom="46dp"
+        android:layout_alignBottom="@+id/linearLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/holo_blue_light" />
 
 </RelativeLayout>

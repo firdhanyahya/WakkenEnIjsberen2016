@@ -12,8 +12,12 @@
     <string name="next">VOLGENDE</string>
     <string name="skip">OVERSLAAN</string>
     <string name="start">BEGREPEN</string>
-
-    <string name="uitlegintro">In het noordpoolgebied leven de ijsberen. Om te kunnen leven moeten de ijsberen eten, ze eten voornamelijk vis. In het noordpoolgebied is veel ijs.
+    <string name="terug">Terug</string>
+    <string name="wak">Wakken:</string>
+    <string name="ijsbeer">IJsberen:</string>
+    <string name="Penguins">Pinguins:</string>
+    <string name="set_Dice">Dobbelstenen</string>
+    <string name="uitlegintro">In het <noo></noo>rdpoolgebied leven de ijsberen. Om te kunnen leven moeten de ijsberen eten, ze eten voornamelijk vis. In het noordpoolgebied is veel ijs.
         \n \n De ijsberen vinden hun vis bij open water, het wak. Vanwege het vele ijs bij de noordpool is het voor de ijsberen erg moeizaam om de vis te vangen.
         Je vindt ze dus alleen in de buurt van wakken. Daar hengelen ze met hun poot in het wak en vangen zo hun vis.</string>
     <string name="uitlegstap1">Het spel moet gespeeld worden met meerdere dobbelstenen (3 – 8 stuks). \n \n Bij iedere worp moet het aantal wakken en het aantal ijsberen geraden worden door telling.

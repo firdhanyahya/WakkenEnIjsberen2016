@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dot_dark_screen3">
+    android:background="@drawable/settings">
 
     <TextView
         android:text="Timer"
@@ -45,7 +45,7 @@
         android:layout_alignBaseline="@+id/dicesTxt" />
 
     <TextView
-        android:text="Dobbelstenen"
+        android:text="@string/set_Dice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -92,18 +92,8 @@
         android:layout_alignLeft="@+id/languageSpinner"
         android:layout_alignStart="@+id/languageSpinner" />
 
-    <Spinner
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/languageSpinner"
-        android:layout_above="@+id/dicesSpinner"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBaseline="@+id/languageTxt"
-        android:animateLayoutChanges="false" />
-
     <Button
-        android:text="Back"
+        android:text="@string/terug"
         android:layout_width="166dp"
         android:layout_height="52dp"
         android:textColor="#ffffff"
@@ -116,5 +106,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/languageSpinner"
+        android:animateLayoutChanges="false"
+        android:layout_above="@+id/dicesTxt"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
