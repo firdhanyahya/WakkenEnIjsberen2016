@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wakken en IJsberen</string>
+    <string name="checkBtn">Check answer</string>
+    <string name="highscores">Highscores</string>
+    <string name="howto">How to play</string>
+    <string name="next">NEXT</string>
+    <string name="play">Play</string>
+    <string name="settings">Settings</string>
+    <string name="skip">SKIP</string>
+    <string name="slide_1_desc">Here you\'ll have the choice to choose between 3, 4, 5, or 8 dices to throw. Next you\'ll have to fill in how many iceholes, polarbears and penguins you see.</string>
+    <string name="slide_1_title">Welcome to Iceholes and Polarbears</string>
+    <string name="slide_2_desc">A Icehole is the middle eye of a dice, the polarbears are the eyes around the icehole. Only around a icehole will there be polarbears! Is there no icehole then there\'s no polarbear. The penguins are the eyes at the back of the dice.</string>
+    <string name="slide_2_desc_extra">The front and back of a dice are always 7 eyes.</string>
+    <string name="slide_2_title">How does it work?</string>
+    <string name="slide_3_title">Good luck!</string>
+    <string name="start">I UNDERSTAND</string>
+    <string name="title_activity_level_passed"></string>
+    <string name="uitlegintro">In the northpole live the polarbears. To survive polarbears need to eat, they eat fish mostly. In the northpole area is a lot of ice.
+        The polarbears find their fish at open water, the icehole. \n \n Because of too much ice at the northpole it\'s hard for polarbears to catch fish.</string>
+    <string name="uitlegstap1">The game needs to be played with multiple dices (3 - 8 dices). With every throw the iceholes and polarbears need to be guessed by counting.</string>
+    <string name="uitlegstap2">A harder difficulty of the game is playing with penguins, which if you turn this on also needs to be guessed. This is for the pro players.</string>
+    <string name="uitlegstap3">On basis of multiple tries, you\'ll get to shown a hint screen, when you finish a level you\'ll get a reward and can even share it on Facebook.</string>
+    <string name="uitlegstap4">After your victory you\'ll get to select the next level, if you can ofcourse finish the first level that is.</string>
+    <string name="madeby">Made by: Robin Tatlici, Firdhan Yahya, James Morsink</string>
+</resources>
