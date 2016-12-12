@@ -21,7 +21,6 @@
     <string name="uitlegstap2">Een moeilijkere variant van het spel zijn de pinguins. Wanneer je de pinguins aanzet, zul je ook deze moeten kunnen raden. \n \n Deze maken het spel moeilijker, voor spelers die meer uitdaging zoeken.</string>
     <string name="uitlegstap3">Op basis van het aantal pogingen die je nodig hebt kun je een hint krijgen. \n \n Wanneer je een level oplost,
         zul je een certificaat krijgen en het level en aantal pogingen dat je nodig hebt gehad om de oplossing te vinden zijn dan te delen op Facebook. </string>
-    <string name="uitlegstap4">Na je overwinning kun je een ander level selecteren, om te proberen of je ook daar de logica van het antwoord kunt achterhalen. \n \n Tevens kun je desgewenst de pinguins invoegen, indien deze nog niet toegevoegd zijn.</string>
 
     <string name="slide_1_title">Welkom bij Wakken en IJsberen</string>
     <string name="slide_1_desc">Hierbij hebt u de keuze om 3, 4, 5 of 8 dobbelstenen te werpen.
@@ -53,5 +52,6 @@
     <!--Facebook sharing Robin ID-->
     <string name="facebook_app_id" translatable="false">141055453046668</string>
     <string name="title_activity_level_passed" translatable="false">LevelPassed</string>
+    <string name="ok">OK</string>
 
 </resources>
