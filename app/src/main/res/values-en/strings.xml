@@ -21,6 +21,5 @@
     <string name="uitlegstap1">The game needs to be played with multiple dices (3 - 8 dices). With every throw the iceholes and polarbears need to be guessed by counting.</string>
     <string name="uitlegstap2">A harder difficulty of the game is playing with penguins, which if you turn this on also needs to be guessed. This is for the pro players.</string>
     <string name="uitlegstap3">On basis of multiple tries, you\'ll get to shown a hint screen, when you finish a level you\'ll get a reward and can even share it on Facebook.</string>
-    <string name="uitlegstap4">After your victory you\'ll get to select the next level, if you can ofcourse finish the first level that is.</string>
     <string name="madeby">Made by: Robin Tatlici, Firdhan Yahya, James Morsink</string>
 </resources>

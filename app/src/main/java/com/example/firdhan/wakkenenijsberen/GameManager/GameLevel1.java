@@ -144,10 +144,7 @@ public class GameLevel1 extends AppCompatActivity {
                 builder1.setTitle("Wakken en IJsberen hulp");
                 builder1.setMessage(alertWak + "\n" + alertIJsbeer + "\n" + alertPeng);
                 builder1.setCancelable(false); //kan niet buiten de dialog klikken
-
-                builder1.setPositiveButton(
-                        "Begrepen",
-                        new DialogInterface.OnClickListener() {
+                builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
@@ -253,7 +250,7 @@ public class GameLevel1 extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         final Dialog dialog = new Dialog(GameLevel1.this);
         dialog.setContentView(R.layout.ask_playername_dialog);
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
         int seconds = timeInSecs % 60;
         int minutes = (timeInSecs % 3600) / 60;
         //<editor-fold desc="timeplayed en header TextViews">
@@ -269,10 +266,10 @@ public class GameLevel1 extends AppCompatActivity {
         input.setHint("Player_1");
 
         //<editor-fold desc="Share Button">
-        if(!input.getText().toString().trim().isEmpty()) {
+        if(!input.getHint().toString().trim().isEmpty()) {
             ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
             ShareLinkContent content = new ShareLinkContent.Builder()
-                    .setContentTitle(input.getText().toString() + " heeft een level gehaald in Wakken en IJsberen")
+                    .setContentTitle(input.getHint().toString() + " heeft een level gehaald in Wakken en IJsberen")
                     .setContentDescription(String.format("%02d:%02d", minutes, seconds) + " tijd")
                     .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
             shareButton.setShareContent(content);
@@ -295,6 +292,8 @@ public class GameLevel1 extends AppCompatActivity {
                     if (insertScoreToDatabase) {
                         finish();
                         Toast.makeText(GameLevel1.this, "Score is successfully added to the database", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(GameLevel1.this, LevelPassed.class);
+                        startActivity(i);
                     } else {
                         Toast.makeText(GameLevel1.this, "Error by adding score to the database. Please try again", Toast.LENGTH_LONG).show();
                     }

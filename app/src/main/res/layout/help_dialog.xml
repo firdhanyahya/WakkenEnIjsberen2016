@@ -29,6 +29,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.50"
             android:background="@android:color/white"
-            android:text="Agree"/>
+            android:text="@string/ok"/>
     </LinearLayout>
+
 </RelativeLayout>
