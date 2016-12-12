@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 public class Settings extends AppCompatActivity {
 
     private TextView penguinText, timerText, languageText, dicesText;
+    private Button back;
     private Switch penguins, timer;
     private Spinner language, dices;
     private PrefManager manager;
@@ -30,11 +32,13 @@ public class Settings extends AppCompatActivity {
         timerText = (TextView)findViewById(R.id.timerTxt);
         languageText = (TextView)findViewById(R.id.languageTxt);
         dicesText = (TextView)findViewById(R.id.dicesTxt);
+        back = (Button) findViewById(R.id.settingsBackButton);
 
         penguinText.setTypeface(iceFont);
         timerText.setTypeface(iceFont);
         languageText.setTypeface(iceFont);
         dicesText.setTypeface(iceFont);
+        back.setTypeface(iceFont);
 
         penguins = (Switch) findViewById(R.id.penguinSwitch);
         timer = (Switch) findViewById(R.id.timerSwitch);
@@ -138,5 +142,13 @@ public class Settings extends AppCompatActivity {
 
             }
         });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 }

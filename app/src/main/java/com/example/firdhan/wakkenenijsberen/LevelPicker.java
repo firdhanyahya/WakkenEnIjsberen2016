@@ -11,12 +11,14 @@ import android.widget.Button;
 
 import com.example.firdhan.wakkenenijsberen.GameManager.GameLevel1;
 import com.example.firdhan.wakkenenijsberen.GameManager.GameLevel2;
+import com.example.firdhan.wakkenenijsberen.GameManager.GameLevel3;
 
 public class LevelPicker extends AppCompatActivity {
 
     Button level1;
     Button level2;
     Button level3;
+    Button back;
 
 
     @Override
@@ -33,10 +35,12 @@ public class LevelPicker extends AppCompatActivity {
         level1 = (Button)findViewById(R.id.lvl1Btn);
         level2 = (Button)findViewById(R.id.lvl2Btn);
         level3 = (Button)findViewById(R.id.lvl3Btn);
+        back = (Button) findViewById(R.id.levelPickerBackButton);
 
         level1.setTypeface(iceFont);
         level2.setTypeface(iceFont);
         level3.setTypeface(iceFont);
+        back.setTypeface(iceFont);
 
         level1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,8 +61,15 @@ public class LevelPicker extends AppCompatActivity {
         level3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LevelPicker.this, GameLevel1.class);
+                Intent i = new Intent(LevelPicker.this, GameLevel3.class);
                 startActivity(i);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.firdhan.wakkenenijsberen.Databases.DBHandler;
 import com.example.firdhan.wakkenenijsberen.GameLevels.Level2;
 import com.example.firdhan.wakkenenijsberen.Highscores;
+import com.example.firdhan.wakkenenijsberen.MainActivity;
 import com.example.firdhan.wakkenenijsberen.PrefManager;
 import com.example.firdhan.wakkenenijsberen.R;
 import com.facebook.FacebookSdk;
@@ -65,7 +66,7 @@ public class GameLevel2 extends AppCompatActivity {
     String alertPeng = "3.De pinguins zijn de ogen aan de achterkant van de dobbelsteen, De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.";
 
 
-    ImageButton help;
+    ImageButton help, pause;
 
     //Dialog playername input
     private EditText input;
@@ -153,6 +154,15 @@ public class GameLevel2 extends AppCompatActivity {
             }
         });
         //</editor-fold>
+
+        pause = (ImageButton) findViewById(R.id.helpBtn);
+        pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameTimer.cancel();
+                pauseGame();
+            }
+        });
 
         //<editor-fold desc="OnClicktListener voor het checken van antwoord">
         checkAnswerButton.setOnClickListener(new View.OnClickListener() {
@@ -329,23 +339,6 @@ public class GameLevel2 extends AppCompatActivity {
         dialog.show();
     }
 
-    public void testShowData() {
-        SQLiteDatabase db = weiDatabase.getReadableDatabase();
-        Cursor res = db.rawQuery("Select * from HighscoresTable ORDER BY Time", null);
-        if (res.getCount() == 0) {
-            Toast.makeText(this, "nothing found", Toast.LENGTH_SHORT).show();
-        } else {
-            StringBuffer buffer = new StringBuffer();
-            while (res.moveToNext()) {
-                buffer.append("ID :" + res.getInt(0) + "\n");
-                buffer.append("PlayerName :" + res.getString(1) + "\n");
-                buffer.append("Time played :" + res.getString(2) + "\n" +
-                        "Level : " + res.getString(3) + "\n");
-            }
-            Toast.makeText(this, buffer.toString(), Toast.LENGTH_LONG).show();
-        }
-    }
-
     public void showDialogHints(){
         String variantLevel2 = "1. Wakken {0,0,0,1,1,1}\n"
                 + "2. Ijsberen {0,1,0,2,0,3}\n"
@@ -367,4 +360,53 @@ public class GameLevel2 extends AppCompatActivity {
         AlertDialog alert11 = hintDialog.create();
         alert11.show();
     }
+
+    //<editor-fold desc="Dialog voor het pauzeren van het spel">
+    public void pauseGame(){
+        Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
+        final Dialog dialog = new Dialog(GameLevel2.this);
+        dialog.setContentView(R.layout.pause_menu_dialog);
+        dialog.setCancelable(false);
+        int seconds = timeInSecs % 60;
+        int minutes = (timeInSecs % 3600) / 60;
+        TextView pause_time = (TextView) dialog.findViewById(R.id.pause_timeTv);
+        pause_time.setTypeface(iceFont);
+        pause_time.setText(String.format("%02d:%02d", minutes, seconds));
+
+        Button mainmenu, continuegame, nextLevel;
+        mainmenu = (Button) dialog.findViewById(R.id.pause_MainMenuButton);
+        continuegame = (Button) dialog.findViewById(R.id.pause_continueButton);
+        nextLevel = (Button) dialog.findViewById(R.id.pause_nextLevelButton);
+
+        mainmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent i = new Intent(GameLevel2.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
+        continuegame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameTimer = new Timer();
+                startGameTimer();
+                dialog.cancel();
+            }
+        });
+
+        nextLevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent i = new Intent(GameLevel2.this, GameLevel3.class);
+                startActivity(i);
+            }
+        });
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme; //style id
+        dialog.show();
+
+    }
+    //</editor-fold>
 }

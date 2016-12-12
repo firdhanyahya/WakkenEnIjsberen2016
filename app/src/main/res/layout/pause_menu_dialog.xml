@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="300dp">
+
+    <TextView
+        android:text="Paused"
+        android:layout_width="wrap_content"
+        android:id="@+id/pauseTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_height="40dp"
+        android:background="@color/bg_screen1"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pauseTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:id="@+id/pause_timeTv"
+        android:textSize="15sp"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:text="Main Menu"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/pause_timeTv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:id="@+id/pause_MainMenuButton"
+        android:textSize="14sp"
+        android:background="@drawable/custom_button"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:text="Continue"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/pause_continueButton"
+        android:background="@drawable/custom_button"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/pause_MainMenuButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Next Level"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/pause_nextLevelButton"
+        android:background="@drawable/custom_button"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/pause_continueButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

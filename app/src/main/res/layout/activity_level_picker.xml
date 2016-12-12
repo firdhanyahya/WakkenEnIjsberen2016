@@ -53,4 +53,13 @@
         android:textColor="#ffffff"
         android:textSize="30sp"/>
 
+    <Button
+        android:text="Back"
+        android:layout_width="166dp"
+        android:layout_height="52dp"
+        android:textColor="#ffffff"
+        android:id="@+id/levelPickerBackButton"
+        android:background="@drawable/custom_button"
+        android:layout_weight="0.33" />
+
 </LinearLayout>

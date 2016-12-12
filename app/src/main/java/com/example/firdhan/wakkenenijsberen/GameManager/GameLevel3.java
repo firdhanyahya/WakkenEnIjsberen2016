@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.firdhan.wakkenenijsberen.Databases.DBHandler;
 import com.example.firdhan.wakkenenijsberen.GameLevels.Level3;
 import com.example.firdhan.wakkenenijsberen.Highscores;
+import com.example.firdhan.wakkenenijsberen.MainActivity;
 import com.example.firdhan.wakkenenijsberen.PrefManager;
 import com.example.firdhan.wakkenenijsberen.R;
 import com.facebook.FacebookSdk;
@@ -65,7 +66,7 @@ public class GameLevel3 extends AppCompatActivity {
     String alertPeng = "3.De pinguins zijn de ogen aan de achterkant van de dobbelsteen, De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.";
 
 
-    ImageButton help;
+    ImageButton help,pause;
 
     //Dialog playername input
     private EditText input;
@@ -153,6 +154,16 @@ public class GameLevel3 extends AppCompatActivity {
             }
         });
         //</editor-fold>
+
+        pause = (ImageButton) findViewById(R.id.helpBtn);
+        pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameTimer.cancel();
+                pauseGame();
+            }
+        });
+
         //<editor-fold desc="OnClicktListener voor het checken van antwoord">
         checkAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,6 +181,9 @@ public class GameLevel3 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
+                            if(tries == 5 || tries == 10){
+                                showDialogHints();
+                            }
                             //TODO De hint moet ook nog
                             Toast.makeText(GameLevel3.this, "False", Toast.LENGTH_SHORT).show();
                         }
@@ -187,6 +201,9 @@ public class GameLevel3 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
+                            if(tries == 5 || tries == 10){
+                                showDialogHints();
+                            }
                             //TODO maak een methode voor de hint met dialog ?
                             Toast.makeText(GameLevel3.this, "False", Toast.LENGTH_SHORT).show();
                         }
@@ -340,12 +357,12 @@ public class GameLevel3 extends AppCompatActivity {
     }
 
     public void showDialogHints(){
-        String variantLevel2 = "1. Wakken {0,1,1,1,1,1}\n"
+        String variantLevel3 = "1. Wakken {0,1,1,1,1,1}\n"
                 + "2. Ijsberen {0,1,1,2,2,2}\n"
                 + "3. Penguins {6,5,4,3,2,1}";
         AlertDialog.Builder hintDialog = new AlertDialog.Builder(GameLevel3.this);
         hintDialog.setTitle("Hint");
-        hintDialog.setMessage("Varianten voor deze level: \n" + variantLevel2);
+        hintDialog.setMessage("Varianten voor deze level: \n" + variantLevel3);
         hintDialog.setCancelable(false); //kan niet buiten de dialog klikken
 
         hintDialog.setPositiveButton(
@@ -360,4 +377,52 @@ public class GameLevel3 extends AppCompatActivity {
         AlertDialog alert11 = hintDialog.create();
         alert11.show();
     }
+
+    //<editor-fold desc="Dialog voor het pauzeren van het spel">
+    public void pauseGame(){
+        Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
+        final Dialog dialog = new Dialog(GameLevel3.this);
+        dialog.setContentView(R.layout.pause_menu_dialog);
+        dialog.setCancelable(false);
+        int seconds = timeInSecs % 60;
+        int minutes = (timeInSecs % 3600) / 60;
+        TextView pause_time = (TextView) dialog.findViewById(R.id.pause_timeTv);
+        pause_time.setTypeface(iceFont);
+        pause_time.setText(String.format("%02d:%02d", minutes, seconds));
+
+        Button mainmenu, continuegame, levelPicker;
+        mainmenu = (Button) dialog.findViewById(R.id.pause_MainMenuButton);
+        continuegame = (Button) dialog.findViewById(R.id.pause_continueButton);
+        levelPicker = (Button) dialog.findViewById(R.id.pause_nextLevelButton);
+        levelPicker.setText("Level Picker");
+
+        mainmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent i = new Intent(GameLevel3.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
+        continuegame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameTimer = new Timer();
+                startGameTimer();
+                dialog.cancel();
+            }
+        });
+
+        levelPicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme; //style id
+        dialog.show();
+
+    }
+    //</editor-fold>
 }
