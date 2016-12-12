@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.firdhan.wakkenenijsberen.HighscoreActivity"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background">

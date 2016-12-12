@@ -40,17 +40,23 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity android:name=".GameManager.GameLevel1" />
-        <activity android:name=".HowToPlay" />
-        <activity android:name=".Settings" />
-        <activity android:name=".HighscoreActivity" />
-        <activity android:name=".LevelPicker" />
+        <activity android:name=".HowToPlay"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Settings"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HighscoreActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LevelPicker"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".LevelPassed" />
-        <activity android:name=".GameManager.GameLevel2" />
+        <activity android:name=".LevelPassed"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".GameManager.GameLevel2"
+            android:screenOrientation="portrait"/>
 
         <!-- Sharing Photos and Videos on facebook -->
         <provider
@@ -58,7 +64,8 @@
             android:authorities="com.facebook.app.FacebookContentProvider141055453046668"
             android:exported="true" />
 
-        <activity android:name=".GameManager.GameLevel3"></activity>
+        <activity android:name=".GameManager.GameLevel3"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
