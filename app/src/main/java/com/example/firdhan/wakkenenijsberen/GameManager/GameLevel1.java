@@ -138,7 +138,7 @@ public class GameLevel1 extends AppCompatActivity {
         //</editor-fold>
 
         //<editor-fold desc="Help Button">
-        help = (ImageButton) findViewById(R.id.helpBtn);
+        help = (ImageButton)findViewById(R.id.helpBtn);
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,7 +158,7 @@ public class GameLevel1 extends AppCompatActivity {
         });
         //</editor-fold>
 
-        pause = (ImageButton) findViewById(R.id.helpBtn);
+        pause = (ImageButton)findViewById(R.id.pause_button);
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

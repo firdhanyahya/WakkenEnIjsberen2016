@@ -160,7 +160,7 @@ public class GameLevel3 extends AppCompatActivity {
         });
         //</editor-fold>
 
-        pause = (ImageButton) findViewById(R.id.helpBtn);
+        pause = (ImageButton) findViewById(R.id.pause_button);
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
