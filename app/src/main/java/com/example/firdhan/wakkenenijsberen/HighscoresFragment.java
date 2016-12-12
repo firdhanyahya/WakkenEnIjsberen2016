@@ -74,28 +74,6 @@ public class HighscoresFragment extends Fragment {
         level2 = (Button)v.findViewById(R.id.lvl2ScoreBtn);
         level3 = (Button)v.findViewById(R.id.lvl3ScoreBtn);
 
-        name1.setText("");
-        name2.setText("");
-        name3.setText("");
-        name4.setText("");
-        name5.setText("");
-        name6.setText("");
-        name7.setText("");
-        name8.setText("");
-        name9.setText("");
-        name10.setText("");
-
-        time1.setText("");
-        time2.setText("");
-        time3.setText("");
-        time4.setText("");
-        time5.setText("");
-        time6.setText("");
-        time7.setText("");
-        time8.setText("");
-        time9.setText("");
-        time10.setText("");
-
         frameScores = (FrameLayout)v.findViewById(R.id.frameScores);
 
         if (names.size() == 0 && times.size() == 0) {
@@ -130,6 +108,28 @@ public class HighscoresFragment extends Fragment {
 //        SQLiteDatabase database = db.getWritableDatabase();
         names = db.nameHighscore(level);
         times = db.timeHighscore(level);
+
+        name1.setText("");
+        name2.setText("");
+        name3.setText("");
+        name4.setText("");
+        name5.setText("");
+        name6.setText("");
+        name7.setText("");
+        name8.setText("");
+        name9.setText("");
+        name10.setText("");
+
+        time1.setText("");
+        time2.setText("");
+        time3.setText("");
+        time4.setText("");
+        time5.setText("");
+        time6.setText("");
+        time7.setText("");
+        time8.setText("");
+        time9.setText("");
+        time10.setText("");
 
         if (names.size() >= 10) {
             name1.setText(names.get(0));

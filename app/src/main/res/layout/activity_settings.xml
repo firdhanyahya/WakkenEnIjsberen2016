@@ -6,92 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/settings">
 
-    <TextView
-        android:text="Timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/penguinsTxt"
-        android:layout_marginTop="50dp"
-        android:id="@+id/timerTxt"
-        android:layout_alignLeft="@+id/penguinsTxt"
-        android:layout_alignStart="@+id/penguinsTxt"
-        android:layout_alignRight="@+id/penguinsTxt"
-        android:layout_alignEnd="@+id/penguinsTxt"
-        android:textColor="#fff" />
-
-    <TextView
-        android:text="Taal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/timerTxt"
-        android:layout_marginTop="50dp"
-        android:id="@+id/languageTxt"
-        android:layout_alignRight="@+id/timerTxt"
-        android:layout_alignEnd="@+id/timerTxt"
-        android:layout_alignLeft="@+id/timerTxt"
-        android:layout_alignStart="@+id/timerTxt"
-        android:textColor="#fff" />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dicesSpinner"
-        android:layout_alignBottom="@+id/dicesTxt"
-        android:layout_alignLeft="@+id/languageSpinner"
-        android:layout_alignStart="@+id/languageSpinner"
-        android:layout_marginTop="50dp"
-        android:layout_alignRight="@+id/languageSpinner"
-        android:layout_alignEnd="@+id/languageSpinner"
-        android:layout_alignBaseline="@+id/dicesTxt" />
-
-    <TextView
-        android:text="@string/set_Dice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:id="@+id/dicesTxt"
-        android:layout_below="@+id/languageTxt"
-        android:layout_alignLeft="@+id/languageTxt"
-        android:layout_alignStart="@+id/languageTxt"
-        android:textColor="#fff" />
-
-    <TextView
-        android:text="Penguins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:id="@+id/penguinsTxt"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#fff" />
-
-    <Switch
-        android:text="On"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/timerSwitch"
-        android:checked="true"
-        android:layout_above="@+id/languageTxt"
-        android:layout_alignLeft="@+id/penguinSwitch"
-        android:layout_alignStart="@+id/penguinSwitch"
-        android:textColor="#fff" />
-
-    <Switch
-        android:text="On"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/penguinSwitch"
-        android:checked="true"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:textColor="#fff"
-        android:layout_above="@+id/timerTxt"
-        android:layout_alignLeft="@+id/languageSpinner"
-        android:layout_alignStart="@+id/languageSpinner" />
-
     <Button
         android:text="@string/terug"
         android:layout_width="166dp"
@@ -108,12 +22,67 @@
         android:layout_alignParentStart="true" />
 
     <Spinner
-        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:id="@+id/languageSpinner"
-        android:animateLayoutChanges="false"
-        android:layout_above="@+id/dicesTxt"
+        android:id="@+id/dicesSpinner"
+        android:layout_marginTop="54dp"
+        android:gravity="right"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content" />
+
+    <Switch
+        android:text="On"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timerSwitch"
+        android:checked="true"
+        android:textColor="#fff"
+        android:layout_below="@+id/dicesSpinner"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="66dp" />
+
+    <Switch
+        android:text="On"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/penguinSwitch"
+        android:checked="true"
+        android:textColor="#fff"
+        android:layout_marginTop="71dp"
+        android:layout_below="@+id/timerSwitch"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timerTxt"
+        android:textColor="#fff"
+        android:layout_alignBottom="@+id/timerSwitch"
+        android:layout_alignLeft="@+id/settingsBackButton"
+        android:layout_alignStart="@+id/settingsBackButton" />
+
+    <TextView
+        android:text="Penguins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/penguinsTxt"
+        android:textColor="#fff"
+        android:layout_alignBottom="@+id/penguinSwitch"
+        android:layout_alignLeft="@+id/timerTxt"
+        android:layout_alignStart="@+id/timerTxt" />
+
+    <TextView
+        android:text="@string/set_Dice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dicesTxt"
+        android:textColor="#fff"
+        android:layout_alignBottom="@+id/dicesSpinner"
+        android:layout_alignLeft="@+id/timerTxt"
+        android:layout_alignStart="@+id/timerTxt" />
 
 </RelativeLayout>
