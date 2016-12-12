@@ -6,7 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +29,9 @@ import com.example.firdhan.wakkenenijsberen.LevelPassed;
 import com.example.firdhan.wakkenenijsberen.LevelPicker;
 import com.example.firdhan.wakkenenijsberen.PrefManager;
 import com.example.firdhan.wakkenenijsberen.R;
+import com.facebook.FacebookSdk;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareButton;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -37,8 +42,9 @@ public class GameLevel1 extends AppCompatActivity {
     //Settings
     private Timer gameTimer = new Timer();
     private PrefManager prefsManagers;
-    private Boolean showTimer;
-    private Boolean showPenguins;
+    private boolean showTimer;
+    private boolean showPenguins;
+    private int dicesCount;
 
     //Verander de dice TextViews naar Imageview
 //    private TextView dice1, dice2, dice3, dice4, dice5, timerTextView, penguinsTextView;
@@ -57,7 +63,7 @@ public class GameLevel1 extends AppCompatActivity {
     private int timeInSecs = -1;
     private int[] answers;
     private int[] dices;
-    private int tries = 1;
+    private int tries = 0;
 
     String alertWak = "1.Wak is het middelste oog van een dobbelsteen.";
     String alertIJsbeer = "2.De ijsberen zijn de ogen om een wak heen.";
@@ -78,12 +84,14 @@ public class GameLevel1 extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_game_level1);
-        testShowData();
+        //Custom font
         Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
+
         //Haal alle settings die de gebruiker heeft gekozen
         this.prefsManagers = new PrefManager(this);
         showTimer = prefsManagers.getTimerSetting();
         showPenguins = prefsManagers.getPenguinsSetting();
+        dicesCount = Integer.parseInt(prefsManagers.getDicesSetting().toString());
         //<editor-fold desc="Initialiseren van ImageViews en EditText">
         dice1Img = (ImageView) findViewById(R.id.dice1ImageView);
         dice2Img = (ImageView) findViewById(R.id.dice2ImageView);
@@ -112,7 +120,7 @@ public class GameLevel1 extends AppCompatActivity {
         //Aantal dobbelstenen aangeven en werpen
         //Sla het antwoord op in een array
         // en haal alle geworpen dobbelstenen
-        level1.throwDice(Integer.parseInt(prefsManagers.getDicesSetting().toString()));
+        level1.throwDice(dicesCount);
         dices = level1.getDices();
         answers = level1.getAnswer();
 
@@ -153,31 +161,37 @@ public class GameLevel1 extends AppCompatActivity {
         checkAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Als de gebruiker kiest om de penguins ook mee te tellen
                 if (!showPenguins) {
-                    if(!wakken.getText().toString().trim().isEmpty()
+                    //Check of de EditText niet leeg zijn.
+                    if (!wakken.getText().toString().trim().isEmpty()
                             && !ijsberen.getText().toString().trim().isEmpty()) {
+                        //Check of het ingevoerde antwoord juist is
                         if (Integer.parseInt(wakken.getText().toString()) == answers[0] &&
                                 Integer.parseInt(ijsberen.getText().toString()) == answers[1]) {
+                            //Als het juist is stop de tijd en laat dialog zien
                             gameTimer.cancel();
                             askPlayerName();
                         } else {
                             tries++;
+                            //TODO De hint moet ook nog
                             Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
-                    if(!wakken.getText().toString().trim().isEmpty()
+                    //Check of de EditText niet leeg zijn.
+                    if (!wakken.getText().toString().trim().isEmpty()
                             && !ijsberen.getText().toString().trim().isEmpty()
                             && !penguins.getText().toString().trim().isEmpty()) {
+                        //Check of het ingevoerde antwoord juist is
                         if (Integer.parseInt(wakken.getText().toString()) == answers[0] &&
                                 Integer.parseInt(ijsberen.getText().toString()) == answers[1] &&
                                 Integer.parseInt(penguins.getText().toString()) == answers[2]) {
                             gameTimer.cancel();
                             askPlayerName();
-//                        Intent i = new Intent(GameLevel1.this, LevelPassed.class);
-//                        startActivity(i);
                         } else {
                             tries++;
+                            //TODO maak een methode voor de hint met dialog ?
                             Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -225,64 +239,83 @@ public class GameLevel1 extends AppCompatActivity {
     public void askPlayerName() {
         //* custom font \\*
         Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        Dialog dialog = new Dialog(GameLevel1.this);
+        dialog.setContentView(R.layout.ask_playername_dialog);
         int seconds = timeInSecs % 60;
         int minutes = (timeInSecs % 3600) / 60;
-        input = new EditText(this);
+        //<editor-fold desc="timeplayed en enter player name TextViews">
+        TextView timeplayertv = (TextView) dialog.findViewById(R.id.timeplayedTV);
+        TextView enterplayertv = (TextView) dialog.findViewById(R.id.enterPlayerName);
+        TextView header = (TextView) dialog.findViewById(R.id.dialog_info);
+        header.setTypeface(iceFont);
+        timeplayertv.setTypeface(iceFont);
+        enterplayertv.setTypeface(iceFont);
+        timeplayertv.setText("Time Played: " + String.format("%02d:%02d", minutes, seconds));
+        //</editor-fold>
+        input = (EditText) dialog.findViewById(R.id.playerNameEditText);
         input.setText("Player_1");
-        Dialog dialog = new Dialog(GameLevel1.this);
-            dialog.setContentView(R.layout.ask_playername_dialog);
-        Button shareButton = (Button) dialog.findViewById(R.id.dialog_share);
-        shareButton.setTypeface(iceFont);
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(GameLevel1.this, "Share", Toast.LENGTH_SHORT).show();
-            }
-        });
+
+        //<editor-fold desc="Share Button">
+        ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
+        ShareLinkContent content = new ShareLinkContent.Builder()
+                .setContentTitle(input.getText().toString() + " Heeft een level gehaald in Wakken en IJsberen")
+                .setContentDescription(Integer.toString(timeInSecs) + "in Wakken en IJsberen")
+                .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
+        shareButton.setShareContent(content);
+        //</editor-fold>
+        //<editor-fold desc="Submit Button">
         Button submitButton = (Button) dialog.findViewById(R.id.dialog_submit);
         submitButton.setTypeface(iceFont);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO Sla de naam op en terug naar level picker
-                        //Kijk eerst of de naam text edit niet leeg is.
-                        if(input.getText().toString().trim().isEmpty()){
-                            input.setHint("Please Enter Your Name");
-                        } else {
-                            playerNameAndScore = new Highscores(input.getText().toString(), timeInSecs);
-                            boolean insertScoreToDatabase = weiDatabase.insertData(playerNameAndScore.getPlayerName()
-                                    , playerNameAndScore.getTimeInSeconds(), "Level1");
-                            if(insertScoreToDatabase){
-                                finish();
-                                Toast.makeText(GameLevel1.this, "Score is successfully added to the database", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(GameLevel1.this, "Error by adding score to the database. Please try again", Toast.LENGTH_LONG).show();
-                            }
-                        }
+                //Kijk eerst of de naam text edit niet leeg is.
+                if (input.getText().toString().trim().isEmpty()) {
+                    input.setHint("Please Enter Your Name");
+                } else {
+                    playerNameAndScore = new Highscores(input.getText().toString(), timeInSecs);
+                    boolean insertScoreToDatabase = weiDatabase.insertData(playerNameAndScore.getPlayerName()
+                            , playerNameAndScore.getTimeInSeconds(), "Level1");
+                    if (insertScoreToDatabase) {
+                        finish();
+                        Toast.makeText(GameLevel1.this, "Score is successfully added to the database", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(GameLevel1.this, "Error by adding score to the database. Please try again", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
-//                //<editor-fold desc="Next Level Button">
-//                Button nextLevelButton = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
-//                nextLevelButton.setTypeface(iceFont);
-//                nextLevelButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        //TODO Sla de naam op en door naar de volgende level
-//                        //Kijk eerst of de naam text edit niet leeg is.
-//                        if (input.getText().toString().trim().isEmpty()) {
-//                            input.setHint("Please Enter Your name");
-//                        } else {
-//                            //Finish zorgt ervoor dat als de gebruiker op back button klikt
-//                            //dat de GameLevel1 activity niet meer getoond wordt
-//                            finish();
-//                            Intent i = new Intent(GameLevel1.this, GameLevel2.class);
-//                            startActivity(i);
-//                        }
-//                    }
-//                });
-//                //</editor-fold>
-//            }
-//        });
+        //</editor-fold>
+        //<editor-fold desc="Next Level Button">
+        Button nextLevel = (Button) dialog.findViewById(R.id.dialog_nextlevel);
+        nextLevel.setTypeface(iceFont);
+        nextLevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO Sla de naam op en door naar de volgende level
+                //Kijk eerst of de naam text edit niet leeg is.
+                if (input.getText().toString().trim().isEmpty()) {
+                    input.setHint("Please Enter Your name");
+                } else {
+                    //Finish() zorgt ervoor dat als de gebruiker op back button klikt
+                    //dat de GameLevel1 activity niet meer getoond wordt
+                    playerNameAndScore = new Highscores(input.getText().toString(), timeInSecs);
+                    boolean insertScoreToDatabase = weiDatabase.insertData(playerNameAndScore.getPlayerName()
+                            , playerNameAndScore.getTimeInSeconds(), "Level1");
+                    if (insertScoreToDatabase) {
+                        Toast.makeText(GameLevel1.this, "Score is successfully added to the database", Toast.LENGTH_SHORT).show();
+                        finish();
+                        Intent i = new Intent(GameLevel1.this, GameLevel2.class);
+                        startActivity(i);
+                    } else {
+                        Toast.makeText(GameLevel1.this, "Error by adding score to the database. Please try again", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        });
+        //</editor-fold>
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme; //style id
         dialog.show();
     }
@@ -298,10 +331,11 @@ public class GameLevel1 extends AppCompatActivity {
                 buffer.append("ID :" + res.getInt(0) + "\n");
                 buffer.append("PlayerName :" + res.getString(1) + "\n");
                 buffer.append("Time played :" + res.getString(2) + "\n" +
-                              "Level : " + res.getString(3) + "\n");
+                        "Level : " + res.getString(3) + "\n");
             }
             Toast.makeText(this, buffer.toString(), Toast.LENGTH_LONG).show();
         }
     }
+
 
 }
