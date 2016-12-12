@@ -6,13 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -25,8 +22,6 @@ import android.widget.Toast;
 import com.example.firdhan.wakkenenijsberen.Databases.DBHandler;
 import com.example.firdhan.wakkenenijsberen.GameLevels.Level1;
 import com.example.firdhan.wakkenenijsberen.Highscores;
-import com.example.firdhan.wakkenenijsberen.LevelPassed;
-import com.example.firdhan.wakkenenijsberen.LevelPicker;
 import com.example.firdhan.wakkenenijsberen.PrefManager;
 import com.example.firdhan.wakkenenijsberen.R;
 import com.facebook.FacebookSdk;
@@ -127,13 +122,15 @@ public class GameLevel1 extends AppCompatActivity {
         //Timer zodra het spel begint
         startGameTimer();
 
+        //<editor-fold desc="Laat geworpen dobbelstenen zien met fotos">
         for (int i = 0; i < dices.length; i++) {
             String imageName = "dice" + dices[i];
             int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
             images[i].setImageResource(resID);
         }
+        //</editor-fold>
 
-        //Help button//
+        //<editor-fold desc="Help Button">
         help = (ImageButton) findViewById(R.id.helpBtn);
         help.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,9 +152,8 @@ public class GameLevel1 extends AppCompatActivity {
                 alert11.show();
             }
         });
-
-
-        //OnClicktListener voor het checken van antwoord
+        //</editor-fold>
+        //<editor-fold desc="OnClicktListener voor het checken van antwoord">
         checkAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,6 +195,7 @@ public class GameLevel1 extends AppCompatActivity {
 
             }
         });
+        //</editor-fold>
     }
 
     //Methode voor het laten tellen van de tijd van het spel.
@@ -240,11 +237,12 @@ public class GameLevel1 extends AppCompatActivity {
         //* custom font \\*
         Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
         FacebookSdk.sdkInitialize(getApplicationContext());
-        Dialog dialog = new Dialog(GameLevel1.this);
+        final Dialog dialog = new Dialog(GameLevel1.this);
         dialog.setContentView(R.layout.ask_playername_dialog);
+        dialog.setCancelable(false);
         int seconds = timeInSecs % 60;
         int minutes = (timeInSecs % 3600) / 60;
-        //<editor-fold desc="timeplayed en enter player name TextViews">
+        //<editor-fold desc="timeplayed en header TextViews">
         TextView timeplayertv = (TextView) dialog.findViewById(R.id.timeplayedTV);
         TextView enterplayertv = (TextView) dialog.findViewById(R.id.enterPlayerName);
         TextView header = (TextView) dialog.findViewById(R.id.dialog_info);
@@ -257,12 +255,14 @@ public class GameLevel1 extends AppCompatActivity {
         input.setText("Player_1");
 
         //<editor-fold desc="Share Button">
-        ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
-        ShareLinkContent content = new ShareLinkContent.Builder()
-                .setContentTitle(input.getText().toString() + " Heeft een level gehaald in Wakken en IJsberen")
-                .setContentDescription(Integer.toString(timeInSecs) + "in Wakken en IJsberen")
-                .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
-        shareButton.setShareContent(content);
+        if(!input.getText().toString().trim().isEmpty()) {
+            ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
+            ShareLinkContent content = new ShareLinkContent.Builder()
+                    .setContentTitle("Share Ja")
+                    .setContentDescription(input.getText().toString() + " heeft het spel gesliced")
+                    .build();
+            shareButton.setShareContent(content);
+        }
         //</editor-fold>
         //<editor-fold desc="Submit Button">
         Button submitButton = (Button) dialog.findViewById(R.id.dialog_submit);
@@ -336,6 +336,4 @@ public class GameLevel1 extends AppCompatActivity {
             Toast.makeText(this, buffer.toString(), Toast.LENGTH_LONG).show();
         }
     }
-
-
 }

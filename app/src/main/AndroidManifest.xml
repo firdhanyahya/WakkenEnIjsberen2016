@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+
         <!-- Splash screen -->
         <activity
             android:name=".SplashScreen"
@@ -51,6 +52,11 @@
 
         <activity android:name=".LevelPassed" />
         <activity android:name=".GameManager.GameLevel2"></activity>
+
+        <!--Sharing Photos and Videos on facebook-->
+        <provider android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider141055453046668"
+            android:exported="true"/>
     </application>
 
 </manifest>

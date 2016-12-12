@@ -29,20 +29,20 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.6"
-            android:background="@android:color/white"
+            android:background="@color/com_facebook_messenger_blue"
             android:text="Submit"
-            android:textColor="@color/bg_screen1"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/dialog_nextlevel"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.6"
-            android:background="@android:color/white"
+            android:background="@color/com_facebook_messenger_blue"
             android:text="Next level"
-            android:textColor="@color/bg_screen1"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
     <EditText

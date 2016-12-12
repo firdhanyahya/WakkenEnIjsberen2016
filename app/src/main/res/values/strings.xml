@@ -1,4 +1,5 @@
 <resources>
+
     <!--Main Menu-->
     <string name="app_name">Wakken en IJsberen</string>
     <string name="play">Spelen</string>
