@@ -2,10 +2,13 @@ package com.example.firdhan.wakkenenijsberen.Databases;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.sql.Time;
+import java.util.ArrayList;
 
 /**
  * Created by James on 02/12/2016.
@@ -60,6 +63,45 @@ public class DBHandler extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
 
+    public ArrayList<String> nameHighscore(String level) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("Select * from HighscoresTable WHERE Level = \"" + level + "\" ORDER BY Time", null);
+        ArrayList<String> names = new ArrayList<>();
+
+        if (res.getCount() == 0) {
+//            Toast.makeText(this, "nothing found", Toast.LENGTH_SHORT).show();
+        } else {
+//            StringBuffer buffer = new StringBuffer();
+            while (res.moveToNext()) {
+                names.add(res.getString(1));
+//                buffer.append("ID :" + res.getInt(0) + "\n");
+//                buffer.append("PlayerName :" + res.getString(1) + "\n");
+//                buffer.append("Time played :" + res.getString(2) + "\n" +
+//                        "Level : " + res.getString(3) + "\n");
+            }
+        }
+        return names;
+    }
+
+    public ArrayList<String> timeHighscore(String level) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("Select * from HighscoresTable WHERE Level = \"" + level + "\" ORDER BY Time", null);
+        ArrayList<String> times = new ArrayList<>();
+
+        if (res.getCount() == 0) {
+//            Toast.makeText(this, "nothing found", Toast.LENGTH_SHORT).show();
+        } else {
+//            StringBuffer buffer = new StringBuffer();
+            while (res.moveToNext()) {
+                times.add(res.getString(2));
+//                buffer.append("ID :" + res.getInt(0) + "\n");
+//                buffer.append("PlayerName :" + res.getString(1) + "\n");
+//                buffer.append("Time played :" + res.getString(2) + "\n" +
+//                        "Level : " + res.getString(3) + "\n");
+            }
+        }
+        return times;
     }
 }
