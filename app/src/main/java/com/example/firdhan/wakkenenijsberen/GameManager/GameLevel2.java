@@ -191,7 +191,7 @@ public class GameLevel2 extends AppCompatActivity {
                                 showDialogHints();
                             }
                             //TODO De hint moet ook nog
-                            Toast.makeText(GameLevel2.this, "False", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GameLevel2.this, "Incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
@@ -211,7 +211,7 @@ public class GameLevel2 extends AppCompatActivity {
                                 showDialogHints();
                             }
                             //TODO maak een methode voor de hint met dialog ?
-                            Toast.makeText(GameLevel2.this, "False", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GameLevel2.this, "Incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -376,9 +376,7 @@ public class GameLevel2 extends AppCompatActivity {
         hintDialog.setMessage("Varianten voor deze level: \n" + variantLevel2);
         hintDialog.setCancelable(false); //kan niet buiten de dialog klikken
 
-        hintDialog.setPositiveButton(
-                "Thanks",
-                new DialogInterface.OnClickListener() {
+        hintDialog.setPositiveButton("Thanks", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
 

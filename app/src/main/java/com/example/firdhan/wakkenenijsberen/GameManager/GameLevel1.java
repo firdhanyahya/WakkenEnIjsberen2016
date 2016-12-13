@@ -68,6 +68,7 @@ public class GameLevel1 extends AppCompatActivity {
     private int[] dices;
     private int tries = 0;
 
+    //Bedoeld voor alert dialog in de hulp scherm
     String alertWak = "1.Wak is het middelste oog van een dobbelsteen.";
     String alertIJsbeer = "2.De ijsberen zijn de ogen om een wak heen.";
     String alertPeng = "3.De pinguins zijn de ogen aan de achterkant van de dobbelsteen, De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.";
@@ -185,7 +186,7 @@ public class GameLevel1 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
-                            Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GameLevel1.this, "Incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
@@ -201,7 +202,7 @@ public class GameLevel1 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
-                            Toast.makeText(GameLevel1.this, "False", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GameLevel1.this, "Incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -280,7 +281,7 @@ public class GameLevel1 extends AppCompatActivity {
                 ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
                 content = new ShareLinkContent.Builder()
                         .setContentTitle(name + " Heeft een level gehaald in Wakken en IJsberen")
-                        .setQuote("Hij/zij een level gehaald met tijd: " + String.format("%02d:%02d", minutes, seconds))
+                        .setQuote("Hij/zij heeft een level gehaald met tijd: " + String.format("%02d:%02d", minutes, seconds))
                         .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
                 shareButton.setShareContent(content);
             }
@@ -293,7 +294,7 @@ public class GameLevel1 extends AppCompatActivity {
                 ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
                 content = new ShareLinkContent.Builder()
                         .setContentTitle(name + " Heeft een level gehaald in Wakken en IJsberen")
-                        .setQuote("Hij/zij een level gehaald met tijd: " + String.format("%02d:%02d", minutes, seconds))
+                        .setQuote("Hij/zij heeft een level gehaald met tijd: " + String.format("%02d:%02d", minutes, seconds))
                         .setContentUrl(Uri.parse("https://dl.dropboxusercontent.com/u/10633539/Gold_Award.PNG")).build();
                 shareButton.setShareContent(content);
             }

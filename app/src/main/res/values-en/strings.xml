@@ -27,4 +27,15 @@
     <string name="uitlegstap2">A harder difficulty of the game is playing with penguins, which if you turn this on also needs to be guessed. This is for the pro players.</string>
     <string name="uitlegstap3">On basis of multiple tries, you\'ll get to shown a hint screen, when you finish a level you\'ll get a reward and can even share it on Facebook.</string>
     <string name="madeby">Made by: Robin Tatlici, Firdhan Yahya, James Morsink</string>
+    <string name="nameinput">Enter playername here:</string>
+    <string name="congrats">Congratulations</string>
+    <string name="playernamehere">Name player</string>
+    <string name="share">Share</string>
+    <string name="ok">OK</string>
+    <string name="submit">Submit</string>
+    <string name="volgendelevel">Next level</string>
+    <string name="cont">Continue</string>
+    <string name="menu">Main menu</string>
+    <string name="nxtlvl">Next level</string>
+    <string name="paused">Paused</string>
 </resources>

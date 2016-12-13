@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="280dp"
-    android:background="@drawable/background">
+    android:background="@drawable/settings">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,11 +18,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/dialog_share"
-            android:background="@color/bg_screen3"
+            android:background="@color/com_facebook_blue"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_weight="0.5" />
+            android:layout_weight="0.5"
+            android:text="@string/share" />
 
         <Button
             android:id="@+id/dialog_submit"
@@ -30,7 +31,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.6"
             android:background="@color/com_facebook_messenger_blue"
-            android:text="Submit"
+            android:text="@string/submit"
             android:layout_marginLeft="10dp"
             android:textColor="@android:color/white" />
 
@@ -40,7 +41,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.6"
             android:background="@color/com_facebook_messenger_blue"
-            android:text="Next level"
+            android:text="@string/volgendelevel"
             android:layout_marginLeft="10dp"
             android:textColor="@android:color/white" />
     </LinearLayout>
@@ -51,9 +52,10 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:gravity="center"
-        android:text="Well done!"
+        android:text="@string/congrats"
+        android:background="@color/bg_screen1"
         android:textSize="30sp"
-        android:textColor="@color/bg_screen1"
+        android:textColor="@android:color/white"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -68,28 +70,29 @@
         android:textSize="18sp"
         android:textColor="@color/com_facebook_button_background_color_pressed" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:id="@+id/enterPlayerName"
-        android:layout_above="@+id/playerNameEditText"
-        android:layout_centerHorizontal="true"
-        android:textSize="18sp"
-        android:textColor="@color/com_facebook_button_background_color_pressed"
-        android:hint="Enter Player Name: "
-        android:background="@color/bg_screen3" />
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Playername here"
+        android:hint="@string/playernamehere"
+        android:gravity="center"
         android:ems="10"
         android:id="@+id/playerNameEditText"
-        android:layout_marginBottom="46dp"
-        android:layout_alignBottom="@+id/linearLayout2"
+        android:background="@android:color/holo_blue_light"
+        android:layout_below="@+id/enterPlayerName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@android:color/holo_blue_light" />
+        android:layout_marginTop="34dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/enterPlayerName"
+        android:textSize="18sp"
+        android:textColor="@color/com_facebook_button_background_color_pressed"
+        android:hint="@string/nameinput"
+        android:background="@color/bg_screen3"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/dialog_info"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

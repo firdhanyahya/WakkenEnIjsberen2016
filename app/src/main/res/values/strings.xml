@@ -12,12 +12,30 @@
     <string name="next">VOLGENDE</string>
     <string name="skip">OVERSLAAN</string>
     <string name="start">BEGREPEN</string>
+
+    <!--Spel tekst-->
     <string name="terug">Terug</string>
     <string name="wak">Wakken:</string>
     <string name="ijsbeer">IJsberen:</string>
-    <string name="Penguins">Pinguins:</string>
-    <string name="set_Dice">Dobbelstenen</string>
-    <string name="uitlegintro">In het <noo></noo>rdpoolgebied leven de ijsberen. Om te kunnen leven moeten de ijsberen eten, ze eten voornamelijk vis. In het noordpoolgebied is veel ijs.
+    <string name="Penguins">Pinguïns:</string>
+    <string name="set_Dice">Dobbelstenen:</string>
+
+    <!--Dialog pauze-->
+    <string name="paused">Gepauzeerd</string>
+    <string name="menu">Hoofd menu</string>
+    <string name="cont">Doorgaan</string>
+    <string name="nxtlvl">Volgende level</string>
+
+    <!--Dialog share-->
+    <string name="congrats">Gefeliciteerd</string>
+    <string name="nameinput">Speler naam invoeren:</string>
+    <string name="playernamehere">Naam speler</string>
+    <string name="share">Delen</string>
+    <string name="submit">Submit</string>
+    <string name="volgendelevel">Volgende level</string>
+    
+    <!--Uitleg tekst-->
+    <string name="uitlegintro">In het Noordpoolgebied leven de ijsberen. Om te kunnen leven moeten de ijsberen eten, ze eten voornamelijk vis. In het noordpoolgebied is veel ijs.
         \n \n De ijsberen vinden hun vis bij open water, het wak. Vanwege het vele ijs bij de noordpool is het voor de ijsberen erg moeizaam om de vis te vangen.
         Je vindt ze dus alleen in de buurt van wakken. Daar hengelen ze met hun poot in het wak en vangen zo hun vis.</string>
     <string name="uitlegstap1">Het spel moet gespeeld worden met meerdere dobbelstenen (3 – 8 stuks). \n \n Bij iedere worp moet het aantal wakken en het aantal ijsberen geraden worden door telling.
@@ -37,12 +55,6 @@
     <string name="slide_2_desc_extra">De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.</string>
     <string name="slide_3_title">Veel succes!</string>
     <string name="checkBtn">Check antwoord</string>
-
-    <!--Spinner Items-->
-    <string-array name="languages_for_spinner">
-        <item>Nederlands</item>
-        <item>English</item>
-    </string-array>
 
     <string-array name="how_many_dices_spinner">
         <item>3</item>

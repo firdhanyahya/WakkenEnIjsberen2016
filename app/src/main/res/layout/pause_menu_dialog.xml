@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/settings"
     android:layout_height="300dp">
 
     <TextView
-        android:text="Paused"
+        android:text="@string/paused"
         android:layout_width="wrap_content"
         android:id="@+id/pauseTextView"
         android:layout_alignParentRight="true"
@@ -29,7 +29,7 @@
         android:textColor="@android:color/black" />
 
     <Button
-        android:text="Main Menu"
+        android:text="@string/menu"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_below="@+id/pause_timeTv"
@@ -41,7 +41,7 @@
         android:textColor="@android:color/white" />
 
     <Button
-        android:text="Continue"
+        android:text="@string/cont"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:id="@+id/pause_continueButton"
@@ -52,7 +52,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="Next Level"
+        android:text="@string/nxtlvl"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:id="@+id/pause_nextLevelButton"
