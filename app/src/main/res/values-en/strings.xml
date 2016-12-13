@@ -28,7 +28,7 @@
     <string name="uitlegstap3">On basis of multiple tries, you\'ll get to shown a hint screen, when you finish a level you\'ll get a reward and can even share it on Facebook.</string>
     <string name="madeby">Made by: Robin Tatlici, Firdhan Yahya, James Morsink</string>
     <string name="nameinput">Enter playername here:</string>
-    <string name="congrats">Congratulations</string>
+    <string name="congrats">Congratulations you completed the level</string>
     <string name="playernamehere">Name player</string>
     <string name="share">Share</string>
     <string name="ok">OK</string>

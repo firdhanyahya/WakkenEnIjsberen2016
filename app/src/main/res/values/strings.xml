@@ -27,7 +27,7 @@
     <string name="nxtlvl">Volgende level</string>
 
     <!--Dialog share-->
-    <string name="congrats">Gefeliciteerd</string>
+    <string name="congrats">Gefeliciteerd je hebt het level voltooid</string>
     <string name="nameinput">Speler naam invoeren:</string>
     <string name="playernamehere">Naam speler</string>
     <string name="share">Delen</string>

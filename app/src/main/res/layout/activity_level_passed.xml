@@ -8,21 +8,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.firdhan.wakkenenijsberen.LevelPassed">
 
-    <TextView
-        android:text="Gefeliciteerd je hebt het level voltooid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:background="@color/bg_screen2"
-        android:textColor="@android:color/white"
-        android:layout_alignParentTop="true"
-        android:id="@+id/textView12"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textSize="30sp" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,5 +50,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
         android:textSize="24sp" />
+
+    <TextView
+        android:text="@string/congrats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/bg_screen2"
+        android:textColor="@android:color/white"
+        android:id="@+id/textView12"
+        android:textSize="30sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
