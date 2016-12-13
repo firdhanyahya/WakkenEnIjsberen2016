@@ -253,10 +253,10 @@ public class GameLevel1 extends AppCompatActivity {
         final Dialog dialog = new Dialog(GameLevel1.this);
         dialog.setContentView(R.layout.ask_playername_dialog);
         dialog.setCancelable(true);
-        int seconds = timeInSecs % 60;
-        int minutes = (timeInSecs % 3600) / 60;
+        final int seconds = timeInSecs % 60;
+        final int minutes = (timeInSecs % 3600) / 60;
         //<editor-fold desc="timeplayed en header TextViews">
-        TextView timeplayertv = (TextView) dialog.findViewById(R.id.timeplayedTV);
+        final TextView timeplayertv = (TextView) dialog.findViewById(R.id.timeplayedTV);
         TextView enterplayertv = (TextView) dialog.findViewById(R.id.enterPlayerName);
         TextView header = (TextView) dialog.findViewById(R.id.dialog_info);
         header.setTypeface(iceFont);
@@ -317,6 +317,8 @@ public class GameLevel1 extends AppCompatActivity {
                         finish();
                         Toast.makeText(GameLevel1.this, "Score is successfully added to the database", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(GameLevel1.this, LevelPassed.class);
+                        i.putExtra("name", name);
+                        i.putExtra("timer", String.format("%02d:%02d", minutes, seconds));
                         startActivity(i);
                     } else {
                         Toast.makeText(GameLevel1.this, "Error by adding score to the database. Please try again", Toast.LENGTH_LONG).show();
