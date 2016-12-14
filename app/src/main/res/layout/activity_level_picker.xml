@@ -54,7 +54,7 @@
         android:textSize="30sp"/>
 
     <Button
-        android:text="Back"
+        android:text="@string/terug"
         android:layout_width="166dp"
         android:layout_height="52dp"
         android:textColor="#ffffff"

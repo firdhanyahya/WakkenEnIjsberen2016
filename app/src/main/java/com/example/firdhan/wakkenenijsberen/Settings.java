@@ -30,26 +30,18 @@ public class Settings extends AppCompatActivity {
 
         penguinText = (TextView)findViewById(R.id.penguinsTxt);
         timerText = (TextView)findViewById(R.id.timerTxt);
-//        languageText = (TextView)findViewById(R.id.languageTxt);
         dicesText = (TextView)findViewById(R.id.dicesTxt);
         back = (Button) findViewById(R.id.settingsBackButton);
 
         penguinText.setTypeface(iceFont);
         timerText.setTypeface(iceFont);
-//        languageText.setTypeface(iceFont);
         dicesText.setTypeface(iceFont);
         back.setTypeface(iceFont);
 
         penguins = (Switch) findViewById(R.id.penguinSwitch);
         timer = (Switch) findViewById(R.id.timerSwitch);
 
-//        language = (Spinner) findViewById(R.id.languageSpinner);
         dices = (Spinner) findViewById(R.id.dicesSpinner);
-//
-//        //Items voor de spinners
-//        ArrayAdapter<CharSequence> languageAdapter = ArrayAdapter.createFromResource(this,
-//                R.array.languages_for_spinner, android.R.layout.simple_dropdown_item_1line);
-//        language.setAdapter(languageAdapter);
 
         ArrayAdapter<CharSequence> diceCountAdapter = ArrayAdapter.createFromResource(this,
                 R.array.how_many_dices_spinner, android.R.layout.simple_list_item_activated_1);
@@ -60,7 +52,6 @@ public class Settings extends AppCompatActivity {
         //Haal settings uit sharedpreference
         boolean boolPenguins = manager.getPenguinsSetting();
         boolean boolTimer = manager.getTimerSetting();
-//        String stringLanguage = manager.getLanguageSetting();
         String stringDices = manager.getDicesSetting();
 
         if(boolPenguins == true) {
@@ -78,11 +69,6 @@ public class Settings extends AppCompatActivity {
             timer.setChecked(false);
             timer.setText("Off");
         }
-
-//        if (!stringLanguage.equals(null)) {
-//            int languagePosition = languageAdapter.getPosition(stringLanguage);
-//            language.setSelection(languagePosition);
-//        }
 
         if (!stringDices.equals(null)) {
             int dicePosition = diceCountAdapter.getPosition(stringDices);
@@ -116,19 +102,6 @@ public class Settings extends AppCompatActivity {
                 }
             }
         });
-
-//        language.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                String setting = language.getSelectedItem().toString();
-//                manager.editLanguageSettings(setting);
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
 
         dices.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

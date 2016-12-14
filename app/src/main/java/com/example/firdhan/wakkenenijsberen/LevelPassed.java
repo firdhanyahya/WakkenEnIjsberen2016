@@ -1,6 +1,7 @@
 package com.example.firdhan.wakkenenijsberen;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,9 +12,9 @@ import android.widget.TextView;
 
 public class LevelPassed extends AppCompatActivity {
 
-    Button terug;
-    String name, timeInSecs;
-    TextView txtNamePlayer, scoreTimer;
+    private Button terug;
+    private String name, timeInSecs;
+    private TextView txtNamePlayer, scoreTimer, congrats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +25,22 @@ public class LevelPassed extends AppCompatActivity {
         }
         setContentView(R.layout.activity_level_passed);
 
+        //* custom font voor de certificaat screen \\*
+        Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
         terug = (Button)findViewById(R.id.btnBack);
         txtNamePlayer = (TextView)findViewById(R.id.txtName);
         scoreTimer = (TextView)findViewById(R.id.txtScore);
+        congrats = (TextView) findViewById(R.id.levelPassedCongrats);
+
+        terug.setTypeface(iceFont);
+        txtNamePlayer.setTypeface(iceFont);
+        scoreTimer.setTypeface(iceFont);
+        congrats.setTypeface(iceFont);
 
         terug.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-//                Intent i = new Intent(LevelPassed.this, MainActivity.class);
-//                startActivity(i);
             }
         });
 

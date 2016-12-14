@@ -40,7 +40,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.6"
             android:background="@color/com_facebook_messenger_blue"
-            android:text="Next level"
+            android:text="@string/volgendelevel"
             android:layout_marginLeft="10dp"
             android:textColor="@android:color/white" />
     </LinearLayout>
