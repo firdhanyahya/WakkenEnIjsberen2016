@@ -18,7 +18,7 @@
     <string name="ijsbeer">IJsberen:</string>
     <string name="Penguins">Pinguins:</string>
     <string name="set_Dice">Dobbelstenen</string>
-    <string name="uitlegintro">In het <noo></noo>rdpoolgebied leven de ijsberen. Om te kunnen leven moeten de ijsberen eten, ze eten voornamelijk vis. In het noordpoolgebied is veel ijs.
+    <string name="uitlegintro">In het Noordpoolgebied leven de ijsberen. Om te kunnen leven moeten de ijsberen eten, ze eten voornamelijk vis. In het noordpoolgebied is veel ijs.
         \n \n De ijsberen vinden hun vis bij open water, het wak. Vanwege het vele ijs bij de noordpool is het voor de ijsberen erg moeizaam om de vis te vangen.
         Je vindt ze dus alleen in de buurt van wakken. Daar hengelen ze met hun poot in het wak en vangen zo hun vis.</string>
     <string name="uitlegstap1">Het spel moet gespeeld worden met meerdere dobbelstenen (3 – 8 stuks). \n \n Bij iedere worp moet het aantal wakken en het aantal ijsberen geraden worden door telling.
@@ -38,7 +38,8 @@
     <string name="slide_2_desc_extra">De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.</string>
     <string name="slide_3_title">Veel succes!</string>
     <string name="checkBtn">Check antwoord</string>
-    <string name="congrats">Gefeliciteerd</string>
+    <string name="welldone">Heel goed!</string>
+    <string name="congrats">Gefeliciteerd, je hebt het level voltooid.</string>
     <string name="submit">Submit</string>
     <string name="volgendelevel">Volgende Level</string>
     <string name="playernamehere">Speler naam hier</string>
@@ -46,7 +47,7 @@
     <string name="paused">Gepauzeerd</string>
     <string name="menu">Menu</string>
     <string name="cont">Doorgaan</string>
-    <string name="nxtlvl">Volgende Level</string>
+    <string name="nxtlvl">Volgende level</string>
     <!--Spinner Items-->
     <string-array name="how_many_dices_spinner">
         <item>3</item>
