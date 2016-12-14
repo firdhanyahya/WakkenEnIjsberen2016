@@ -22,8 +22,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_weight="0.5"
-            android:text="@string/share" />
+            android:layout_weight="0.5" />
 
         <Button
             android:id="@+id/dialog_submit"

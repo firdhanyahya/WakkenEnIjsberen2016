@@ -1,61 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!--Main Menu-->
     <string name="app_name">Wakken en IJsberen</string>
-    <string name="play">Spelen</string>
-    <string name="howto">Uitleg</string>
-    <string name="settings">Instellingen</string>
+    <string name="checkBtn">Check answer</string>
     <string name="highscores">Highscores</string>
-    <string name="madeby">Gemaakt door: Robin Tatlici, Firdhan Yahya, James Morsink</string>
-
-    <!--Intro Slider-->
-    <string name="next">VOLGENDE</string>
-    <string name="skip">OVERSLAAN</string>
-    <string name="start">BEGREPEN</string>
-
-    <!--Spel tekst-->
-    <string name="terug">Terug</string>
-    <string name="wak">Wakken:</string>
-    <string name="ijsbeer">IJsberen:</string>
-    <string name="Penguins">Pinguïns:</string>
-    <string name="set_Dice">Dobbelstenen:</string>
-
-    <!--Dialog pauze-->
-    <string name="paused">Gepauzeerd</string>
-    <string name="menu">Hoofd menu</string>
-    <string name="cont">Doorgaan</string>
-    <string name="nxtlvl">Volgende level</string>
-
-    <!--Dialog share-->
-    <string name="congrats">Gefeliciteerd je hebt het level voltooid</string>
-    <string name="nameinput">Speler naam invoeren:</string>
-    <string name="playernamehere">Naam speler</string>
-    <string name="share">Delen</string>
+    <string name="howto">How to play</string>
+    <string name="next">NEXT</string>
+    <string name="play">Play</string>
+    <string name="settings">Settings</string>
+    <string name="skip">SKIP</string>
+    <string name="terug">Back</string>
+    <string name="wak">Ice holes:</string>
+    <string name="ijsbeer">Polar bears:</string>
+    <string name="Penguins">Penguins:</string>
+    <string name="set_Dice">Dices</string>
+    <string name="slide_1_desc">Here you\'ll have the choice to choose between 3, 4, 5, or 8 dices to throw. Next you\'ll have to fill in how many iceholes, polarbears and penguins you see.</string>
+    <string name="slide_1_title">Welcome to Iceholes and Polarbears</string>
+    <string name="slide_2_desc">A Icehole is the middle eye of a dice, the polarbears are the eyes around the icehole. Only around a icehole will there be polarbears! Is there no icehole then there\'s no polarbear. The penguins are the eyes at the back of the dice.</string>
+    <string name="slide_2_desc_extra">The front and back of a dice are always 7 eyes.</string>
+    <string name="slide_2_title">How does it work?</string>
+    <string name="slide_3_title">Good luck!</string>
+    <string name="start">I UNDERSTAND</string>
+    <string name="title_activity_level_passed">Level Passed</string>
+    <string name="uitlegintro">In the northpole live the polarbears. To survive polarbears need to eat, they eat fish mostly. In the northpole area is a lot of ice.
+        The polarbears find their fish at open water, the icehole. \n \n Because of too much ice at the northpole it\'s hard for polarbears to catch fish.</string>
+    <string name="uitlegstap1">The game needs to be played with multiple dices (3 - 8 dices). With every throw the iceholes and polarbears need to be guessed by counting.</string>
+    <string name="uitlegstap2">A harder difficulty of the game is playing with penguins, which if you turn this on also needs to be guessed. This is for the pro players.</string>
+    <string name="uitlegstap3">On basis of multiple tries, you\'ll get to shown a hint screen, when you finish a level you\'ll get a reward and can even share it on Facebook.</string>
+    <string name="madeby">Made by: Robin Tatlici, Firdhan Yahya, James Morsink</string>
+    <string name="congrats">Congrats</string>
     <string name="submit">Submit</string>
-    <string name="volgendelevel">Volgende level</string>
-    
-    <!--Uitleg tekst-->
-    <string name="uitlegintro">In het Noordpoolgebied leven de ijsberen. Om te kunnen leven moeten de ijsberen eten, ze eten voornamelijk vis. In het noordpoolgebied is veel ijs.
-        \n \n De ijsberen vinden hun vis bij open water, het wak. Vanwege het vele ijs bij de noordpool is het voor de ijsberen erg moeizaam om de vis te vangen.
-        Je vindt ze dus alleen in de buurt van wakken. Daar hengelen ze met hun poot in het wak en vangen zo hun vis.</string>
-    <string name="uitlegstap1">Het spel moet gespeeld worden met meerdere dobbelstenen (3 – 8 stuks). \n \n Bij iedere worp moet het aantal wakken en het aantal ijsberen geraden worden door telling.
-        Het aantal is te raden door één en ander in een ruimere scope te plaatsen, en op een creatieve manier te bekijken</string>
-    <string name="uitlegstap2">Een moeilijkere variant van het spel zijn de pinguins. Wanneer je de pinguins aanzet, zul je ook deze moeten kunnen raden. \n \n Deze maken het spel moeilijker, voor spelers die meer uitdaging zoeken.</string>
-    <string name="uitlegstap3">Op basis van het aantal pogingen die je nodig hebt kun je een hint krijgen. \n \n Wanneer je een level oplost,
-        zul je een certificaat krijgen en het level en aantal pogingen dat je nodig hebt gehad om de oplossing te vinden zijn dan te delen op Facebook. </string>
-
-    <string name="slide_1_title">Welkom bij Wakken en IJsberen</string>
-    <string name="slide_1_desc">Hierbij hebt u de keuze om 3, 4, 5 of 8 dobbelstenen te werpen.
-                                Als volgt moet u invullen hoeveel wakken, ijsberen en pinguins u ziet.</string>
-    <string name="slide_2_title">Hoe werkt het?</string>
-    <string name="slide_2_desc">Een wak is het middelste oog van een dobbelsteen.\n\
-                                De ijsberen zijn de ogen om een wak heen. \n\ Alleen om een wak zitten ijsberen!\n\
-                                Zit er GEEN wak op de dobbelsteen, dan is er ook geen ijsbeer.\n\
-                                De pinguins zijn de ogen aan de achterkant van de dobbelsteen.</string>
-    <string name="slide_2_desc_extra">De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.</string>
-    <string name="slide_3_title">Veel succes!</string>
-    <string name="checkBtn">Check antwoord</string>
-
+    <string name="volgendelevel">Next Level</string>
+    <string name="playernamehere">Player name here</string>
+    <string name="nameinput">Name input</string>
+    <string name="paused">Paused</string>
+    <string name="menu">Menu</string>
+    <string name="cont">Continue</string>
+    <string name="nxtlvl">Next Level</string>
     <string-array name="how_many_dices_spinner">
         <item>3</item>
         <item>4</item>
@@ -64,10 +44,6 @@
         <item>7</item>
         <item>8</item>
     </string-array>
-
-    <!--Facebook sharing Robin ID-->
     <string name="facebook_app_id" translatable="false">141055453046668</string>
-    <string name="title_activity_level_passed" translatable="false">LevelPassed</string>
     <string name="ok">OK</string>
-
 </resources>

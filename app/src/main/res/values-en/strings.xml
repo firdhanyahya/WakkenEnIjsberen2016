@@ -20,22 +20,26 @@
     <string name="slide_2_title">How does it work?</string>
     <string name="slide_3_title">Good luck!</string>
     <string name="start">I UNDERSTAND</string>
-    <string name="title_activity_level_passed"></string>
     <string name="uitlegintro">In the northpole live the polarbears. To survive polarbears need to eat, they eat fish mostly. In the northpole area is a lot of ice.
         The polarbears find their fish at open water, the icehole. \n \n Because of too much ice at the northpole it\'s hard for polarbears to catch fish.</string>
     <string name="uitlegstap1">The game needs to be played with multiple dices (3 - 8 dices). With every throw the iceholes and polarbears need to be guessed by counting.</string>
     <string name="uitlegstap2">A harder difficulty of the game is playing with penguins, which if you turn this on also needs to be guessed. This is for the pro players.</string>
     <string name="uitlegstap3">On basis of multiple tries, you\'ll get to shown a hint screen, when you finish a level you\'ll get a reward and can even share it on Facebook.</string>
     <string name="madeby">Made by: Robin Tatlici, Firdhan Yahya, James Morsink</string>
-    <string name="nameinput">Enter playername here:</string>
-    <string name="congrats">Congratulations you completed the level</string>
-    <string name="playernamehere">Name player</string>
-    <string name="share">Share</string>
-    <string name="ok">OK</string>
+    <string name="congrats">Congrats</string>
     <string name="submit">Submit</string>
-    <string name="volgendelevel">Next level</string>
-    <string name="cont">Continue</string>
-    <string name="menu">Main menu</string>
-    <string name="nxtlvl">Next level</string>
-    <string name="paused">Paused</string>
+    <string name="volgendelevel">Next Level</string>
+    <string name="playernamehere">Player name here</string>
+    <string name="nameinput">Name input</string>
+    <string-array name="how_many_dices_spinner">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string name="facebook_app_id" translatable="false">141055453046668</string>
+    <string name="title_activity_level_passed" translatable="false">Level Passed</string>
+    <string name="ok">OK</string>
 </resources>

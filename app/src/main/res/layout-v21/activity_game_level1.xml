@@ -13,6 +13,17 @@
     android:orientation="vertical"
     tools:context="com.example.firdhan.wakkenenijsberen.GameManager.GameLevel1">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_level"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:shadowColor="@android:color/black"
+        android:background="@color/bg_screen1"
+        android:textColor="@android:color/white" />
+
     <ImageButton
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -40,17 +51,6 @@
         android:layout_alignParentLeft="true" />
 
     <TextView
-        android:text="@string/wak"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/wakkenTxt"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="@android:color/white"
-        android:background="@color/bg_screen3" />
-
-    <TextView
         android:text="@string/ijsbeer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
         android:layout_marginTop="52dp"
         android:id="@+id/IJsberenTxt"
         android:textColor="@android:color/white"
-        android:background="@color/bg_screen3" />
+        android:background="@color/bg_screen1" />
 
     <TextView
         android:text="@string/Penguins"
@@ -72,7 +72,18 @@
         android:layout_marginTop="52dp"
         android:id="@+id/game_penguinTextView"
         android:textColor="@android:color/white"
-        android:background="@color/bg_screen3" />
+        android:background="@color/bg_screen1" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/timerTxt"
+        android:background="@color/bg_screen1"
+        android:textColor="@android:color/white"
+        android:layout_width="300dp"
+        android:textAlignment="center" />
 
     <Button
         android:text="@string/checkBtn"
@@ -86,6 +97,17 @@
         android:layout_below="@+id/editText3"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:text="@string/wak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wakkenTxt"
+        android:layout_alignBottom="@+id/editText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/white"
+        android:background="@color/bg_screen1" />
+
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -93,6 +115,7 @@
         android:ems="10"
         android:id="@+id/editText2"
         android:layout_above="@+id/game_penguinTextView"
+        android:layout_alignLeft="@+id/editText"
         android:layout_alignStart="@+id/editText" />
 
     <EditText
@@ -102,6 +125,7 @@
         android:ems="10"
         android:id="@+id/editText3"
         android:layout_alignBottom="@+id/game_penguinTextView"
+        android:layout_alignLeft="@+id/editText2"
         android:layout_alignStart="@+id/editText2" />
 
     <EditText
@@ -113,25 +137,14 @@
         android:id="@+id/editText"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:id="@+id/timerTxt"
-        android:background="@color/bg_screen1"
-        android:textColor="@android:color/white"
-        android:layout_width="300dp"
-        android:textAlignment="center" />
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:id="@+id/linearBottom"
+        android:layout_above="@+id/wakkenTxt"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="100dp">
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -162,12 +175,13 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:id="@+id/linearTop"
         android:layout_weight="1"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp">
 
         <ImageView
             android:layout_width="wrap_content"

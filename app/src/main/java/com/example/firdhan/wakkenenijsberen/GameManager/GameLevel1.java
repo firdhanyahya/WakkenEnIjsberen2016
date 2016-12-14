@@ -76,6 +76,7 @@ public class GameLevel1 extends AppCompatActivity {
     ImageButton help, pause;
     String name;
     ShareLinkContent content;
+    TextView level_number;
 
     //</editor-fold>
     @Override
@@ -86,10 +87,14 @@ public class GameLevel1 extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_game_level1);
+        level_number = (TextView) findViewById(R.id.textView_level);
         FacebookSdk.sdkInitialize(getApplicationContext());
         //Custom font
         Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
 
+        //Laat zien welke level de speler speelt.
+        level_number.setTypeface(iceFont);
+        level_number.setText("Level 1");
         //Haal alle settings die de gebruiker heeft gekozen
         this.prefsManagers = new PrefManager(this);
         showTimer = prefsManagers.getTimerSetting();
@@ -143,18 +148,7 @@ public class GameLevel1 extends AppCompatActivity {
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(GameLevel1.this);
-                builder1.setTitle("Wakken en IJsberen hulp");
-                builder1.setMessage(alertWak + "\n" + alertIJsbeer + "\n" + alertPeng);
-                builder1.setCancelable(false); //kan niet buiten de dialog klikken
-                builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
+                showDialogHints();
             }
         });
         //</editor-fold>
@@ -186,6 +180,9 @@ public class GameLevel1 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
+                            if(tries >= 5 && tries % 5 == 0){
+                                showDialogHints();
+                            }
                             Toast.makeText(GameLevel1.this, "Incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -202,6 +199,9 @@ public class GameLevel1 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
+                            if(tries >= 5 && tries % 5 == 0){
+                                showDialogHints();
+                            }
                             Toast.makeText(GameLevel1.this, "Incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -252,7 +252,7 @@ public class GameLevel1 extends AppCompatActivity {
         Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
         final Dialog dialog = new Dialog(GameLevel1.this);
         dialog.setContentView(R.layout.ask_playername_dialog);
-        dialog.setCancelable(true);
+        dialog.setCancelable(false);
         final int seconds = timeInSecs % 60;
         final int minutes = (timeInSecs % 3600) / 60;
         //<editor-fold desc="timeplayed en header TextViews">
@@ -368,6 +368,8 @@ public class GameLevel1 extends AppCompatActivity {
         int seconds = timeInSecs % 60;
         int minutes = (timeInSecs % 3600) / 60;
         TextView pause_time = (TextView) dialog.findViewById(R.id.pause_timeTv);
+        TextView pauseText = (TextView) dialog.findViewById(R.id.pauseTextView);
+        pauseText.setTypeface(iceFont);
         pause_time.setTypeface(iceFont);
         pause_time.setText(String.format("%02d:%02d", minutes, seconds));
 
@@ -375,6 +377,10 @@ public class GameLevel1 extends AppCompatActivity {
         mainmenu = (Button) dialog.findViewById(R.id.pause_MainMenuButton);
         continuegame = (Button) dialog.findViewById(R.id.pause_continueButton);
         nextLevel = (Button) dialog.findViewById(R.id.pause_nextLevelButton);
+
+        mainmenu.setTypeface(iceFont);
+        continuegame.setTypeface(iceFont);
+        nextLevel.setTypeface(iceFont);
 
         mainmenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -407,4 +413,19 @@ public class GameLevel1 extends AppCompatActivity {
 
     }
     //</editor-fold>
+
+    public void showDialogHints(){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(GameLevel1.this);
+        builder1.setTitle("Wakken en IJsberen hulp");
+        builder1.setMessage(alertWak + "\n" + alertIJsbeer + "\n" + alertPeng);
+        builder1.setCancelable(false); //kan niet buiten de dialog klikken
+        builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
 }

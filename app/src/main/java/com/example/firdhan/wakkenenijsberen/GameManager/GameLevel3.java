@@ -66,7 +66,7 @@ public class GameLevel3 extends AppCompatActivity {
 
     String alertWak = "1.Dobbelsteen 1 heeft geen wak. De rest van dobbelstenen hebben 1 wak.";
     String alertIJsbeer = "2.Als u de dobbelsteen door de helft snijdt, aantal ijberen zijn gelijk aan aantal ogen boven/onder de dobbelsteen";
-    String alertPeng = "3.De pinguins zijn de ogen aan de achterkant van de dobbelsteen, De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.";
+    String alertPeng = "3.De pinguins zijn de ogen aan de achterkant van de dobbelsteen, De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen. \n elke dobbelsteen heeft penguins";
 
 
     ImageButton help,pause;
@@ -75,6 +75,7 @@ public class GameLevel3 extends AppCompatActivity {
     private EditText input;
     private String name;
     private ShareLinkContent content;
+    private TextView level_number;
 
     //</editor-fold>
     @Override
@@ -85,9 +86,12 @@ public class GameLevel3 extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_game_level1);
+        level_number = (TextView) findViewById(R.id.textView_level);
         //Custom font
         Typeface iceFont = Typeface.createFromAsset(getAssets(), "grandice_regular.ttf");
 
+        level_number.setTypeface(iceFont);
+        level_number.setText("Level 3");
         //Haal alle settings die de gebruiker heeft gekozen
         this.prefsManagers = new PrefManager(this);
         showTimer = prefsManagers.getTimerSetting();
@@ -186,7 +190,7 @@ public class GameLevel3 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
-                            if(tries == 5 || tries == 10){
+                            if(tries >= 5 && tries % 5 ==0){
                                 showDialogHints();
                             }
                             //TODO De hint moet ook nog
@@ -206,7 +210,7 @@ public class GameLevel3 extends AppCompatActivity {
                             askPlayerName();
                         } else {
                             tries++;
-                            if(tries == 5 || tries == 10){
+                            if(tries >= 5 && tries % 5 ==0){
                                 showDialogHints();
                             }
                             //TODO maak een methode voor de hint met dialog ?
@@ -367,24 +371,17 @@ public class GameLevel3 extends AppCompatActivity {
     }
 
     public void showDialogHints(){
-        String variantLevel3 = "1. Wakken {0,1,1,1,1,1}\n"
-                + "2. Ijsberen {0,1,1,2,2,2}\n"
-                + "3. Penguins {6,5,4,3,2,1}";
-        AlertDialog.Builder hintDialog = new AlertDialog.Builder(GameLevel3.this);
-        hintDialog.setTitle("Hint");
-        hintDialog.setMessage("Varianten voor deze level: \n" + variantLevel3);
-        hintDialog.setCancelable(false); //kan niet buiten de dialog klikken
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(GameLevel3.this);
+        builder1.setTitle("Wakken en IJsberen hulp");
+        builder1.setMessage(alertWak + "\n" + alertIJsbeer + "\n" + alertPeng);
+        builder1.setCancelable(false); //kan niet buiten de dialog klikken
+        builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
 
-        hintDialog.setPositiveButton(
-                "Thanks",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-
-                    }
-                });
-
-        AlertDialog alert11 = hintDialog.create();
+        AlertDialog alert11 = builder1.create();
         alert11.show();
     }
 
@@ -397,6 +394,9 @@ public class GameLevel3 extends AppCompatActivity {
         int seconds = timeInSecs % 60;
         int minutes = (timeInSecs % 3600) / 60;
         TextView pause_time = (TextView) dialog.findViewById(R.id.pause_timeTv);
+        TextView pauseText = (TextView) dialog.findViewById(R.id.pauseTextView);
+
+        pauseText.setTypeface(iceFont);
         pause_time.setTypeface(iceFont);
         pause_time.setText(String.format("%02d:%02d", minutes, seconds));
 
@@ -405,6 +405,10 @@ public class GameLevel3 extends AppCompatActivity {
         continuegame = (Button) dialog.findViewById(R.id.pause_continueButton);
         levelPicker = (Button) dialog.findViewById(R.id.pause_nextLevelButton);
         levelPicker.setText("Level Picker");
+
+        mainmenu.setTypeface(iceFont);
+        continuegame.setTypeface(iceFont);
+        levelPicker.setTypeface(iceFont);
 
         mainmenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -435,4 +439,5 @@ public class GameLevel3 extends AppCompatActivity {
 
     }
     //</editor-fold>
+
 }

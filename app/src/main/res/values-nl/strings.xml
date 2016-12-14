@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Main Menu-->
+    <string name="app_name">Wakken en IJsberen</string>
+    <string name="play">Spelen</string>
+    <string name="howto">Uitleg</string>
+    <string name="settings">Instellingen</string>
+    <string name="highscores">Highscores</string>
+    <string name="madeby">Gemaakt door: Robin Tatlici, Firdhan Yahya, James Morsink</string>
+
+    <!--Intro Slider-->
+    <string name="next">VOLGENDE</string>
+    <string name="skip">OVERSLAAN</string>
+    <string name="start">BEGREPEN</string>
+    <string name="terug">Terug</string>
+    <string name="wak">Wakken:</string>
+    <string name="ijsbeer">IJsberen:</string>
+    <string name="Penguins">Pinguins:</string>
+    <string name="set_Dice">Dobbelstenen</string>
+    <string name="uitlegintro">In het <noo></noo>rdpoolgebied leven de ijsberen. Om te kunnen leven moeten de ijsberen eten, ze eten voornamelijk vis. In het noordpoolgebied is veel ijs.
+        \n \n De ijsberen vinden hun vis bij open water, het wak. Vanwege het vele ijs bij de noordpool is het voor de ijsberen erg moeizaam om de vis te vangen.
+        Je vindt ze dus alleen in de buurt van wakken. Daar hengelen ze met hun poot in het wak en vangen zo hun vis.</string>
+    <string name="uitlegstap1">Het spel moet gespeeld worden met meerdere dobbelstenen (3 – 8 stuks). \n \n Bij iedere worp moet het aantal wakken en het aantal ijsberen geraden worden door telling.
+        Het aantal is te raden door één en ander in een ruimere scope te plaatsen, en op een creatieve manier te bekijken</string>
+    <string name="uitlegstap2">Een moeilijkere variant van het spel zijn de pinguins. Wanneer je de pinguins aanzet, zul je ook deze moeten kunnen raden. \n \n Deze maken het spel moeilijker, voor spelers die meer uitdaging zoeken.</string>
+    <string name="uitlegstap3">Op basis van het aantal pogingen die je nodig hebt kun je een hint krijgen. \n \n Wanneer je een level oplost,
+        zul je een certificaat krijgen en het level en aantal pogingen dat je nodig hebt gehad om de oplossing te vinden zijn dan te delen op Facebook. </string>
+
+    <string name="slide_1_title">Welkom bij Wakken en IJsberen</string>
+    <string name="slide_1_desc">Hierbij hebt u de keuze om 3, 4, 5 of 8 dobbelstenen te werpen.
+                                Als volgt moet u invullen hoeveel wakken, ijsberen en pinguins u ziet.</string>
+    <string name="slide_2_title">Hoe werkt het?</string>
+    <string name="slide_2_desc">Een wak is het middelste oog van een dobbelsteen.\n\
+                                De ijsberen zijn de ogen om een wak heen. \n\ Alleen om een wak zitten ijsberen!\n\
+                                Zit er GEEN wak op de dobbelsteen, dan is er ook geen ijsbeer.\n\
+                                De pinguins zijn de ogen aan de achterkant van de dobbelsteen.</string>
+    <string name="slide_2_desc_extra">De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.</string>
+    <string name="slide_3_title">Veel succes!</string>
+    <string name="checkBtn">Check antwoord</string>
+    <string name="congrats">Gefeliciteerd</string>
+    <string name="submit">Submit</string>
+    <string name="volgendelevel">Volgende Level</string>
+    <string name="playernamehere">Speler naam hier</string>
+    <string name="nameinput">Voer naam in</string>
+    <string name="paused">Gepauzeerd</string>
+    <string name="menu">Menu</string>
+    <string name="cont">Doorgaan</string>
+    <string name="nxtlvl">Volgende Level</string>
+    <!--Spinner Items-->
+    <string-array name="how_many_dices_spinner">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <!--Facebook sharing Robin ID-->
+    <string name="facebook_app_id" translatable="false">141055453046668</string>
+    <string name="title_activity_level_passed" translatable="false">LevelPassed</string>
+    <string name="ok">OK</string>
+
+</resources>
