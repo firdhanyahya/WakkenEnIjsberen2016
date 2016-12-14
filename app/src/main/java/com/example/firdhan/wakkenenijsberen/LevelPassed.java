@@ -32,8 +32,8 @@ public class LevelPassed extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent i = new Intent(LevelPassed.this, MainActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(LevelPassed.this, MainActivity.class);
+//                startActivity(i);
             }
         });
 
