@@ -65,9 +65,9 @@ public class GameLevel2 extends AppCompatActivity {
     private int[] dices;
     private int tries = 0;
 
-    String alertWak = "1.Dobbelsteen 1, 2 of 3 heeft geen wak. Dobbelsteen 4, 5 of 6 heeft 1 wak.";
+    String alertWak = "1.Dobbelsteen 1, 2 en 3 hebben geen wak. Dobbelsteen 4, 5 en 6 hebben 1 wak.";
     String alertIJsbeer = "2.Aantal ijsberen is gelijk aan (aantal ogen dobbelsteen / 2). Oneven dobbelstenen hebben geen ijsberen";
-    String alertPeng = "3.De pinguins zijn de ogen aan de achterkant van de dobbelsteen, Maar dobbelsteen 3 en 5 hebben geen penguins.";
+    String alertPeng = "3.De pinguins zijn de ogen aan de achterkant van de dobbelsteen, alleen dobbelsteen 3 en 5 hebben geen penguins.";
 
 
     ImageButton help, pause;

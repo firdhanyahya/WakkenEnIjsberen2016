@@ -64,8 +64,8 @@ public class GameLevel3 extends AppCompatActivity {
     private int[] dices;
     private int tries = 0;
 
-    String alertWak = "1.Wak is het middelste oog van een dobbelsteen.";
-    String alertIJsbeer = "2.De ijsberen zijn de ogen om een wak heen.";
+    String alertWak = "1.Dobbelsteen 1 heeft geen wak. De rest van dobbelstenen hebben 1 wak.";
+    String alertIJsbeer = "2.Als u de dobbelsteen door de helft snijdt, aantal ijberen zijn gelijk aan aantal ogen boven/onder de dobbelsteen";
     String alertPeng = "3.De pinguins zijn de ogen aan de achterkant van de dobbelsteen, De voorkant en de achterkant van de dobbelsteen zijn altijd samen 7 ogen.";
 
 
