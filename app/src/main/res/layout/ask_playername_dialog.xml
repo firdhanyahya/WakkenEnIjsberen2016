@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:gravity="center"
-        android:text="@string/congrats"
+        android:text="@string/welldone"
         android:background="@color/bg_screen1"
         android:textSize="30sp"
         android:textColor="@android:color/white"
