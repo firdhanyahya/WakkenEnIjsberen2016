@@ -47,4 +47,9 @@
     </string-array>
     <string name="facebook_app_id" translatable="false">141055453046668</string>
     <string name="ok">OK</string>
+    <string name="timeplayed">Time Played: </string>
+    <string name="playerNaam">Player Name: </string>
+    <string name="succesAdded">Score is successfully added to the database</string>
+    <string name="errorAdding">Error: Can't add score to the database</string>
+
 </resources>

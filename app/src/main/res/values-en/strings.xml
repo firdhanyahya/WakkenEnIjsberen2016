@@ -47,4 +47,8 @@
     <string name="nxtlvl">Next level</string>
     <string name="paused">Paused</string>
     <string name="cont">Continue</string>
+    <string name="timeplayed">Time Played: </string>
+    <string name="playerNaam">Player Name: </string>
+    <string name="succesAdded">Score is successfully added to the database</string>
+    <string name="errorAdding">Error: Can't add score to the database</string>
 </resources>

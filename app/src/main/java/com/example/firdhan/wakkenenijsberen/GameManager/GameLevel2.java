@@ -47,7 +47,6 @@ public class GameLevel2 extends AppCompatActivity {
     private int dicesCount;
 
     //Verander de dice TextViews naar Imageview
-//    private TextView dice1, dice2, dice3, dice4, dice5, timerTextView, penguinsTextView;
     private TextView timerTextView, penguinsTextView;
     private EditText wakken, ijsberen, penguins;
     private Button checkAnswerButton;
@@ -77,8 +76,11 @@ public class GameLevel2 extends AppCompatActivity {
 
     //Dialog playername input
     private EditText input;
+    int seconds;
+    int minutes;
 
     //</editor-fold>
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -219,8 +221,8 @@ public class GameLevel2 extends AppCompatActivity {
                 public void run() {
                     try {
                         timeInSecs++;
-                        int seconds = timeInSecs % 60;
-                        int minutes = (timeInSecs % 3600) / 60;
+                        seconds = timeInSecs % 60;
+                        minutes = (timeInSecs % 3600) / 60;
                         timerTextView.setText(String.format("%02d:%02d", minutes, seconds));
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -233,8 +235,8 @@ public class GameLevel2 extends AppCompatActivity {
                 public void run() {
                     try {
                         timeInSecs++;
-                        int seconds = timeInSecs % 60;
-                        int minutes = (timeInSecs % 3600) / 60;
+                    seconds = timeInSecs % 60;
+                    minutes = (timeInSecs % 3600) / 60;
                         timerTextView.setText(String.format("%02d:%02d", minutes, seconds));
                         timerTextView.setVisibility(View.INVISIBLE);
                     } catch (Exception e) {
@@ -253,8 +255,6 @@ public class GameLevel2 extends AppCompatActivity {
         final Dialog dialog = new Dialog(GameLevel2.this);
         dialog.setContentView(R.layout.ask_playername_dialog);
         dialog.setCancelable(false);
-        int seconds = timeInSecs % 60;
-        int minutes = (timeInSecs % 3600) / 60;
         //<editor-fold desc="timeplayed en header TextViews">
         TextView timeplayertv = (TextView) dialog.findViewById(R.id.timeplayedTV);
         TextView enterplayertv = (TextView) dialog.findViewById(R.id.enterPlayerName);
@@ -262,7 +262,7 @@ public class GameLevel2 extends AppCompatActivity {
         header.setTypeface(iceFont);
         timeplayertv.setTypeface(iceFont);
         enterplayertv.setTypeface(iceFont);
-        timeplayertv.setText("Time Played: " + String.format("%02d:%02d", minutes, seconds));
+        timeplayertv.setText(getString(R.string.timeplayed) + " " + String.format("%02d:%02d", minutes, seconds));
         //</editor-fold>
         input = (EditText) dialog.findViewById(R.id.playerNameEditText);
         input.setHint("Player_1");
@@ -276,8 +276,6 @@ public class GameLevel2 extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 name = input.getText().toString();
-                int seconds = timeInSecs % 60;
-                int minutes = (timeInSecs % 3600) / 60;
                 ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
                 content = new ShareLinkContent.Builder()
                         .setContentTitle(name + " Heeft een level gehaald in Wakken en IJsberen")
@@ -289,8 +287,6 @@ public class GameLevel2 extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 name = input.getText().toString();
-                int seconds = timeInSecs % 60;
-                int minutes = (timeInSecs % 3600) / 60;
                 ShareButton shareButton = (ShareButton) dialog.findViewById(R.id.dialog_share);
                 content = new ShareLinkContent.Builder()
                         .setContentTitle(name + " Heeft een level gehaald in Wakken en IJsberen")
@@ -305,7 +301,6 @@ public class GameLevel2 extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Sla de naam op en terug naar level picker
                 //Kijk eerst of de naam text edit niet leeg is.
                 if (input.getText().toString().trim().isEmpty()) {
                     input.setHint("Please Enter Your Name");
@@ -315,11 +310,13 @@ public class GameLevel2 extends AppCompatActivity {
                             , playerNameAndScore.getTimeInSeconds(), "Level2");
                     if (insertScoreToDatabase) {
                         finish();
-                        Toast.makeText(GameLevel2.this, "Score is successfully added to the database", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GameLevel2.this, getString(R.string.succesAdded), Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(GameLevel2.this, LevelPassed.class);
+                        i.putExtra("name", name);
+                        i.putExtra("timer", String.format("%02d:%02d", minutes, seconds));
                         startActivity(i);
                     } else {
-                        Toast.makeText(GameLevel2.this, "Error by adding score to the database. Please try again", Toast.LENGTH_LONG).show();
+                        Toast.makeText(GameLevel2.this, getString(R.string.errorAdding), Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -343,12 +340,12 @@ public class GameLevel2 extends AppCompatActivity {
                     boolean insertScoreToDatabase = weiDatabase.insertData(playerNameAndScore.getPlayerName()
                             , playerNameAndScore.getTimeInSeconds(), "Level2");
                     if (insertScoreToDatabase) {
-                        Toast.makeText(GameLevel2.this, "Score is successfully added to the database", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GameLevel2.this, getString(R.string.succesAdded), Toast.LENGTH_SHORT).show();
                         finish();
                         Intent i = new Intent(GameLevel2.this, GameLevel2.class);
                         startActivity(i);
                     } else {
-                        Toast.makeText(GameLevel2.this, "Error by adding score to the database. Please try again", Toast.LENGTH_LONG).show();
+                        Toast.makeText(GameLevel2.this, getString(R.string.errorAdding), Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -379,8 +376,6 @@ public class GameLevel2 extends AppCompatActivity {
         final Dialog dialog = new Dialog(GameLevel2.this);
         dialog.setContentView(R.layout.pause_menu_dialog);
         dialog.setCancelable(false);
-        int seconds = timeInSecs % 60;
-        int minutes = (timeInSecs % 3600) / 60;
         TextView pause_time = (TextView) dialog.findViewById(R.id.pause_timeTv);
         TextView pauseText = (TextView) dialog.findViewById(R.id.pauseTextView);
 

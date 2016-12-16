@@ -50,8 +50,8 @@ public class LevelPassed extends AppCompatActivity {
                 name = extras.getString("name");
                 timeInSecs = extras.getString("timer");
             }
-            txtNamePlayer.setText("Playername: " + name);
-            scoreTimer.setText("Tijd: " + timeInSecs);
+            txtNamePlayer.setText(getString(R.string.playerNaam) + " " + name);
+            scoreTimer.setText(getString(R.string.timeplayed) + " " + timeInSecs);
         }
     }
 }

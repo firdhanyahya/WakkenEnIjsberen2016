@@ -42,6 +42,8 @@
     <string name="congrats">Gefeliciteerd, je hebt het level voltooid.</string>
     <string name="submit">Submit</string>
     <string name="volgendelevel">Volgende Level</string>
+    <string name="timeplayed">Tijd Gespeeld: </string>
+    <string name="playerNaam">Naam Speler: </string>
     <string name="playernamehere">Speler naam hier</string>
     <string name="nameinput">Voer naam in</string>
     <string name="paused">Gepauzeerd</string>
@@ -60,7 +62,9 @@
 
     <!--Facebook sharing Robin ID-->
     <string name="facebook_app_id" translatable="false">141055453046668</string>
-    <string name="title_activity_level_passed" translatable="false">LevelPassed</string>
+    <string name="title_activity_level_passed" translatable="false">Level Passed</string>
     <string name="ok">OK</string>
+    <string name="succesAdded">Score is succesvol toegevoegd aan de database</string>
+    <string name="errorAdding">Foutmelding: Fout opgetreden bij het opslaan van de score</string>
 
 </resources>
