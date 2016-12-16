@@ -303,7 +303,7 @@ public class GameLevel2 extends AppCompatActivity {
             public void onClick(View v) {
                 //Kijk eerst of de naam text edit niet leeg is.
                 if (input.getText().toString().trim().isEmpty()) {
-                    input.setHint("Please Enter Your Name");
+                    input.setHint(getString(R.string.playernamehere));
                 } else {
                     playerNameAndScore = new Highscores(input.getText().toString(), timeInSecs);
                     boolean insertScoreToDatabase = weiDatabase.insertData(playerNameAndScore.getPlayerName()

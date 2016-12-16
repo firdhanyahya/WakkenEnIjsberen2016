@@ -348,7 +348,7 @@ public class GameLevel3 extends AppCompatActivity {
                 //TODO Sla de naam op en door naar de volgende level
                 //Kijk eerst of de naam text edit niet leeg is.
                 if (input.getText().toString().trim().isEmpty()) {
-                    input.setHint("Please Enter Your name");
+                    input.setHint(getString(R.string.playernamehere));
                 } else {
                     //Finish() zorgt ervoor dat als de gebruiker op back button klikt
                     //dat de GameLevel3 activity niet meer getoond wordt
