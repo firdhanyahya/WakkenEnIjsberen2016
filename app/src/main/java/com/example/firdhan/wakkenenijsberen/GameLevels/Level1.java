@@ -37,7 +37,6 @@ public class Level1 implements ILevel{
         aantalPinguins = 0;
 
         for(int dice : dices){
-
             switch(dice){
                 case 1:
                     aantalWakken += this.wakken[0];

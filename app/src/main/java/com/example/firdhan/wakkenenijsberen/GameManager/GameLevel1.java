@@ -88,6 +88,7 @@ public class GameLevel1 extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
+
         setContentView(R.layout.activity_game_level1);
         level_number = (TextView) findViewById(R.id.textView_level);
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -97,11 +98,13 @@ public class GameLevel1 extends AppCompatActivity {
         //Laat zien welke level de speler speelt.
         level_number.setTypeface(iceFont);
         level_number.setText("Level 1");
+
         //Haal alle settings die de gebruiker heeft gekozen
         this.prefsManagers = new PrefManager(this);
         showTimer = prefsManagers.getTimerSetting();
         showPenguins = prefsManagers.getPenguinsSetting();
         dicesCount = Integer.parseInt(prefsManagers.getDicesSetting().toString());
+
         //<editor-fold desc="Initialiseren van ImageViews en EditText">
         dice1Img = (ImageView) findViewById(R.id.dice1ImageView);
         dice2Img = (ImageView) findViewById(R.id.dice2ImageView);
@@ -125,8 +128,9 @@ public class GameLevel1 extends AppCompatActivity {
             penguinsTextView.setVisibility(View.INVISIBLE);
             penguins.setVisibility(View.INVISIBLE);
         }
+
         //</editor-fold>
-        //Haal aantal dobbelstenen uit sharePref
+        //Haal aantal dobbelstenen uit sharedPref
         //Aantal dobbelstenen aangeven en werpen
         //Sla het antwoord op in een array
         // en haal alle geworpen dobbelstenen
@@ -171,7 +175,7 @@ public class GameLevel1 extends AppCompatActivity {
             public void onClick(View v) {
                 //Als de gebruiker kiest om de penguins ook mee te tellen
                 if (!showPenguins) {
-                    //Check of de EditText niet leeg zijn.
+                    //Check of de EditTexten niet leeg zijn.
                     if (!wakken.getText().toString().trim().isEmpty()
                             && !ijsberen.getText().toString().trim().isEmpty()) {
                         //Check of het ingevoerde antwoord juist is
@@ -328,7 +332,6 @@ public class GameLevel1 extends AppCompatActivity {
         nextLevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Sla de naam op en door naar de volgende level
                 //Kijk eerst of de naam text edit niet leeg is.
                 if (input.getText().toString().trim().isEmpty()) {
                     input.setHint(getString(R.string.playernamehere));

@@ -183,7 +183,6 @@ public class GameLevel2 extends AppCompatActivity {
                             if(tries >= 5 && tries % 5 ==0){
                                 showDialogHints();
                             }
-                            //TODO De hint moet ook nog
                             Toast.makeText(GameLevel2.this, "Incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -203,7 +202,6 @@ public class GameLevel2 extends AppCompatActivity {
                             if(tries >= 5 && tries % 5 ==0){
                                 showDialogHints();
                             }
-                            //TODO maak een methode voor de hint met dialog ?
                             Toast.makeText(GameLevel2.this, "Incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -329,7 +327,6 @@ public class GameLevel2 extends AppCompatActivity {
         nextLevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Sla de naam op en door naar de volgende level
                 //Kijk eerst of de naam text edit niet leeg is.
                 if (input.getText().toString().trim().isEmpty()) {
                     input.setHint("Please Enter Your name");

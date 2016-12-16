@@ -47,7 +47,7 @@ public class GameLevel3 extends AppCompatActivity {
     private int dicesCount;
 
     //Verander de dice TextViews naar Imageview
-//    private TextView dice1, dice2, dice3, dice4, dice5, timerTextView, penguinsTextView;
+    //Private TextView dice1, dice2, dice3, dice4, dice5, timerTextView, penguinsTextView;
     private TextView timerTextView, penguinsTextView;
     private EditText wakken, ijsberen, penguins;
     private Button checkAnswerButton;
@@ -196,7 +196,6 @@ public class GameLevel3 extends AppCompatActivity {
                             if(tries >= 5 && tries % 5 ==0){
                                 showDialogHints();
                             }
-                            //TODO De hint moet ook nog
                             Toast.makeText(GameLevel3.this, "False", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -216,7 +215,6 @@ public class GameLevel3 extends AppCompatActivity {
                             if(tries >= 5 && tries % 5 ==0){
                                 showDialogHints();
                             }
-                            //TODO maak een methode voor de hint met dialog ?
                             Toast.makeText(GameLevel3.this, "False", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -345,7 +343,6 @@ public class GameLevel3 extends AppCompatActivity {
         backtoLevelPicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Sla de naam op en door naar de volgende level
                 //Kijk eerst of de naam text edit niet leeg is.
                 if (input.getText().toString().trim().isEmpty()) {
                     input.setHint(getString(R.string.playernamehere));

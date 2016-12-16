@@ -56,10 +56,6 @@ public class PrefManager {
         return pref.getBoolean(TIMER, true);
     }
 
-    public String getLanguageSetting() {
-        return pref.getString(LANGUAGE, "Nederlands");
-    }
-
     public String getDicesSetting() {
         return pref.getString(DICES, "3");
     }
@@ -71,11 +67,6 @@ public class PrefManager {
 
     public void editTimerSettings(boolean timer) {
         pref.edit().putBoolean(TIMER, timer).apply();
-        editor.commit();
-    }
-
-    public void editLanguageSettings(String language) {
-        pref.edit().putString(LANGUAGE, language).apply();
         editor.commit();
     }
 

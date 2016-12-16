@@ -97,17 +97,6 @@
         android:layout_below="@+id/editText3"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:text="@string/wak"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/wakkenTxt"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="@android:color/white"
-        android:background="@color/bg_screen1" />
-
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -133,7 +122,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="260dp"
         android:id="@+id/editText"
         android:layout_centerHorizontal="true" />
 
@@ -141,10 +130,49 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:id="@+id/linearBottom"
-        android:layout_above="@+id/wakkenTxt"
+        android:id="@+id/linearTop"
+        android:layout_weight="1"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dice1ImageView"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dice2ImageView"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dice3ImageView"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dice4ImageView"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/linearBottom"
+        android:gravity="center"
+        android:layout_below="@+id/linearTop"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="140dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -172,40 +200,16 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/linearTop"
-        android:layout_weight="1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="42dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/dice1ImageView"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/dice2ImageView"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/dice3ImageView"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/dice4ImageView"
-            android:layout_weight="1" />
-    </LinearLayout>
+    <TextView
+        android:text="@string/wak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wakkenTxt"
+        android:textColor="@android:color/white"
+        android:background="@color/bg_screen1"
+        android:layout_alignBottom="@+id/editText"
+        android:layout_alignRight="@+id/game_penguinTextView"
+        android:layout_alignEnd="@+id/game_penguinTextView"
+        android:layout_marginTop="260dp" />
 
 </RelativeLayout>
