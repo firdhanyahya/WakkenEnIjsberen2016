@@ -196,7 +196,7 @@ public class GameLevel3 extends AppCompatActivity {
                             if(tries >= 5 && tries % 5 ==0){
                                 showDialogHints();
                             }
-                            Toast.makeText(GameLevel3.this, "False", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GameLevel3.this, "Incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
@@ -215,7 +215,7 @@ public class GameLevel3 extends AppCompatActivity {
                             if(tries >= 5 && tries % 5 ==0){
                                 showDialogHints();
                             }
-                            Toast.makeText(GameLevel3.this, "False", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GameLevel3.this, "Incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
